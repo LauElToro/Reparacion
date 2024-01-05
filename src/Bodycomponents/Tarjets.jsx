@@ -165,6 +165,7 @@ const Betsellercontainer = styled.div`
   padding-bottom: 100px;
   background-color: #f2f2f2;
   border-radius: 30px;
+  aling-items: center;
 `;
 
 const Texttarjet = styled.div`
@@ -183,7 +184,7 @@ const Buttontarjetcontainer = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 262%;
+  top: 172%;
   padding-top: 0px;
   margin-bottom: 20px;
   .btns-tarjets-searchs {
@@ -203,7 +204,7 @@ const Buttontarjetcontainer = styled.div`
   }
 
   @media (max-width: 720px) {
-    top: 1015px;
+    top: 1095px;
   }
 
   .btns-tarjets-searchs.clicked {

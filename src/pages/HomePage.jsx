@@ -41,8 +41,8 @@ export const HomePage = () => {
               <a href="https://www.instagram.com">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="30"
+                  height="30"
                   fill="currentColor"
                   class="bi bi-instagram"
                   viewBox="0 0 16 16"
@@ -55,8 +55,8 @@ export const HomePage = () => {
               <a href="https://www.linkedin.com/feed/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="30"
+                  height="30"
                   fill="currentColor"
                   class="bi bi-linkedin"
                   viewBox="0 0 16 16"
@@ -81,8 +81,8 @@ export const HomePage = () => {
                 <a href="https://www.instagram.com">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="30"
+                    height="30"
                     fill="currentColor"
                     class="bi bi-instagram"
                     viewBox="0 0 16 16"
@@ -95,8 +95,8 @@ export const HomePage = () => {
                 <a href="https://www.linkedin.com/feed/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="30"
+                    height="30"
                     fill="currentColor"
                     class="bi bi-linkedin"
                     viewBox="0 0 16 16"
@@ -121,8 +121,8 @@ export const HomePage = () => {
                 <a href="https://www.instagram.com">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="30"
+                    height="30"
                     fill="currentColor"
                     class="bi bi-instagram"
                     viewBox="0 0 16 16"
@@ -135,8 +135,8 @@ export const HomePage = () => {
                 <a href="https://www.linkedin.com/feed/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="30"
+                    height="30"
                     fill="currentColor"
                     class="bi bi-linkedin"
                     viewBox="0 0 16 16"

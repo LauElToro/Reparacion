@@ -7,6 +7,7 @@
 .container-carrousel {
   width: 300px;
   border-radius: 10px;
+  align-items: center;
   margin-top: 10px;
   margin-left: 20px;
   background-color: white;
@@ -138,12 +139,14 @@
   margin-top: 80px;
   display: flex;
   justify-content: space-arround;
+  
 }
 
 .container2 {
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
+  
 }
 
 @media (max-width: 720px) {

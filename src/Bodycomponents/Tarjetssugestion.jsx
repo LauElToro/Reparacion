@@ -41,6 +41,9 @@ display:grid;
   font-size:36px;
   color:#111827
   font-style:normal;
+  @media (max-width: 720px) {
+   text-align: center;
+  }
 }
 
 
@@ -55,6 +58,10 @@ display:grid;
   font-size:20px;
   color:#6b7280;
   font-style:normal;
+  @media (max-width: 720px) {
+    padding-top: 20px;
+    text-align: center;
+   }
 }
 
 .suggestcontainer{

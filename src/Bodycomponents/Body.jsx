@@ -10,8 +10,8 @@ function Body() {
         <div className="title-btn">
           <Textcontiner>
             <h2>
-              Hi There! Where would you
-              <br />
+              Hi There! Where <br />would you
+              
               like to go?
             </h2>
             <br />
@@ -39,17 +39,19 @@ const Bodycontainer = styled.div`
     display: block;
     padding-top: 50px;
     margin: 20px;
+    margin-top: 80px;
   }
 
   .title-btn {
     display: block;
   }
 
-  h1 {
+  h2 {
     @media (max-width: 890px) {
       font-style: normal;
       font-size: 36px;
       line-height: 41px;
+      text-align: center;
     }
 
     font-family: Poppins, ui-sans-serif, system-ui, -apple-system,
@@ -57,10 +59,10 @@ const Bodycontainer = styled.div`
       "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", "Noto Color Emoji";
     font-style: normal;
-    font-size: 72px;
+    font-size: 82px;
     line-height: 82px;
     color: #111827;
-    font-weight: 500;
+    font-weight: bolder;
     margin-top: 0;
   }
 `;
@@ -77,5 +79,9 @@ const Textcontiner = styled.div`
     line-height: 28px;
     color: #6b7280;
     font-weight: 500;
+    @media (max-width: 890px) {
+      
+      text-align: center;
+    }
   }
 `;

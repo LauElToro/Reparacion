@@ -21,52 +21,56 @@ function Images() {
 export default Images;
 
 const Imgcontainer = styled.div`
-  @media (max-width: 820px) {
-    margin-top: 30px;
+  display: flex;
+  @media (max-width: 890px) {
+    margin-top:30px;
     height: 370px;
     width: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
 
   .image1 {
-    @media (max-width: 720px) {
+    @media (max-width: 890px) {
       height: 130px;
       width: 170px;
     }
     height: 300px;
-    width: 300px;
-    padding-bottom: 20px;
+    width: 500px;
+    padding-bottom:20px;
   }
 
   .image2 {
-    @media (max-width: 720px) {
-      height: 200px;
-      width: 170px;
-    }
+    @media (max-width: 890px) {
+        height: 150px;
+        width: 160px;
+        margin-left: 5%;
+      }
     height: 300px;
-    width: 300px;
+    width: 400px;
   }
 
   .image3 {
-    @media (max-width: 720px) {
-      height: 300px;
-      width: 1000px;
-      position: relative;
-      top: 50px;
-    }
-    position: relative;
-    top: 80px;
-    height: 615px;
-    width: 100px;
+    @media (max-width: 890px) {
+        height: 300px;
+        width: 150px;
+        position:relative;
+        top:50px;
+        margin-right: 8%;
+      }
+      position:relative;
+      top:80px;
+    height: 715px;
+    width: 600px;
+    margin-right: 100px;
   }
 
   .subcontainerimg {
-    @media (max-width: 890px) {
-      margin-left: 50px;
+    @media  (max-width: 890px) {
+        margin-left:0px;
     }
     display: block;
-    margin-left: 1000px;
+    margin-left: 90px;
   }
 `;

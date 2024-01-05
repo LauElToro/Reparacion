@@ -109,7 +109,15 @@ const Navcontainer = styled.div`
   -webkit-backdrop-filter: blur(10px);
 
   @media (max-width: 890px) {
-      display: none; 
+      display: flex;
+      background-color: #000000; 
+      padding-bottom: 20px;
+      border-radius: 0px;
+      width:100%;
+      margin-top: -80px;
+
+      
+      
   }
 
   header {
@@ -132,7 +140,7 @@ const Navcontainer = styled.div`
     height: 80px;
     margin-left: 50px ;
     margin-top:5px;
-    box-shadow: 1px 2px;
+    
     border-radius: 15px;
     color: #000000;
   }
