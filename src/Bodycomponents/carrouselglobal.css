@@ -138,15 +138,13 @@
 .container1 {
   margin-top: 80px;
   display: flex;
-  justify-content: space-arround;
-  
+  justify-content: space-around;
 }
 
 .container2 {
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
-  
 }
 
 @media (max-width: 720px) {

@@ -2,30 +2,33 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 function DropdownCar() {
-
   return (
     <DropContainer>
       <div className="dropdown-container">
-        <div
-          className="dropdown-trigger"
-        >
+        <div className="dropdown-trigger">
           Car{" "}
           <div className="arrow">
-            <ion-icon name="chevron-down-outline"/>
+            <ion-icon name="chevron-down-outline" />
           </div>
         </div>
-          <ul className="dropdown-menu">
-            <li><a className="droplink" href="/">
-                Opcion
-              </a></li>
-            <li><a className="droplink" href="/">
-                Opcion
-              </a> </li>
-            <li><a className="droplink" href="/">
-                Opcion
-              </a> </li>
-          </ul>
-        </div>
+        <ul className="dropdown-menu">
+          <li>
+            <a className="droplink" href="/">
+              Chevrolet
+            </a>
+          </li>
+          <li>
+            <a className="droplink" href="/">
+              Ford
+            </a>{" "}
+          </li>
+          <li>
+            <a className="droplink" href="/">
+              Lamborghini
+            </a>{" "}
+          </li>
+        </ul>
+      </div>
     </DropContainer>
   );
 }
@@ -33,8 +36,7 @@ function DropdownCar() {
 export default DropdownCar;
 
 const DropContainer = styled.nav`
-
-padding-right:30px;
+  padding-right: 30px;
 
   .arrow {
     margin-left: 3px;
@@ -57,7 +59,7 @@ padding-right:30px;
     line-height: 24px;
     text-decoration: none;
     padding: 0.2em 0.4em;
-    margin-bottom:5px;
+    margin-bottom: 5px;
     border-radius: 0.2em;
     border-radius: 10px;
     cursor: pointer;
@@ -72,7 +74,7 @@ padding-right:30px;
       BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
       "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", "Noto Color Emoji";
-      color: #111827;
+    color: #111827;
     font-style: normal;
     font-size: 16px;
     line-height: 24px;
@@ -99,7 +101,7 @@ padding-right:30px;
   .dropdown-menu li {
     padding: 10px;
     &:hover {
-      border-radius:10px;
+      border-radius: 10px;
       background-color: rgba(128, 128, 128, 0.4);
     }
   }
@@ -118,6 +120,5 @@ padding-right:30px;
     line-height: 24px;
     text-decoration: none;
     color: #333;
-    
   }
 `;

@@ -152,8 +152,8 @@ function Tarjets() {
             Italia
           </button>
         </Buttontarjetcontainer>
-        {renderTarjetscomponents()}
       </Searchtarjetcontainer>
+      {renderTarjetscomponents()}
     </Betsellercontainer>
   );
 }
@@ -176,17 +176,15 @@ const Searchtarjetcontainer = styled.div`
   display: flex;
   align-items: center;
   position: static;
-  z-index: 3;
 `;
 
 const Buttontarjetcontainer = styled.div`
   display: flex;
+
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 172%;
-  padding-top: 0px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+
   .btns-tarjets-searchs {
     font-family: Poppins, ui-sans-serif, system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
@@ -201,6 +199,7 @@ const Buttontarjetcontainer = styled.div`
     margin-left: 35px;
     cursor: pointer;
     background-color: #f2f2f2;
+    width: 90px;
   }
 
   @media (max-width: 720px) {

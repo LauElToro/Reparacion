@@ -39,6 +39,7 @@
 .Searchcontainer {
   display: flex;
   align-items: center;
+
   .form {
     display: flex;
     justify-content: space-around;
@@ -284,31 +285,24 @@ input {
 }
 
 .head-images {
-  position: absolute;
-  left: 700px;
-  top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .img1-reserv {
-  width: 300px;
-  position: absolute;
-  top: -90px;
-  right: 20px;
+  width: 400px;
+  height: 300px;
 }
 
 .img2-reserv {
-  width: 300px;
+  width: 400px;
   height: 300px;
-  position: relative;
-  top: 130px;
-  right: 20px;
 }
 
 .img3-reserv {
-  width: 300px;
-  height: 450px;
-  position: absolute;
-  left: 300px;
+  width: 400px;
+  height: 300px;
 }
 
 .infohotel-container {

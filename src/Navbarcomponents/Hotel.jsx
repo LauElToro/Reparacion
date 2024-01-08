@@ -31,107 +31,107 @@ function DropdownHotel() {
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Lyon
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Marsella
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Nantes
             </a>
           </div>
           <div className="dropdown-option">
             <img src={newyork} alt="" className="imghotel" />
             <p>New York</p>
             <a className="droplink" href="/">
-              Opcion
+              Manhattan
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Broadway
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Empire state
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Central Park
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Brooklin
             </a>
           </div>
           <div className="dropdown-option">
             <img src={california} alt="" className="imghotel" />
             <p>California</p>
             <a className="droplink" href="/">
-              Opcion
+              San francisco
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Santa Barbara
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Yosemite
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              San Diego
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Disney Land
             </a>
           </div>
           <div className="dropdown-option">
             <img src={angeles} alt="" className="imghotel" />
             <p>Los Angeles</p>
             <a className="droplink" href="/">
-              Opcion
+              Hollywood
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              The Getty Center
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Grand Central
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Universal Studios
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Battleship Museum
             </a>
           </div>
           <div className="dropdown-option">
             <img className="imghotel" src={jersey} alt="" />
             <p>New Jersey</p>
             <a className="droplink" href="/">
-              Opcion
+              Atlantic City
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Cape May
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Newark
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Ocean city
             </a>
             <br />
             <a className="droplink" href="/">
-              Opcion
+              Princeton
             </a>
           </div>
         </div>

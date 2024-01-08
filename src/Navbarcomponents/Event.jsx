@@ -14,17 +14,17 @@ function DropdownEvent() {
         <ul className="dropdown-menu">
           <li>
             <a className="droplink" href="/">
-              Opcion
+              Sports
             </a>
           </li>
           <li>
             <a className="droplink" href="/">
-              Opcion
+              Music
             </a>{" "}
           </li>
           <li>
             <a className="droplink" href="/">
-              Opcion
+              Entertainment
             </a>{" "}
           </li>
         </ul>

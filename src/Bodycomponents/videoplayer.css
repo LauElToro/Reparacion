@@ -13,7 +13,7 @@
 }
 
 .img-video {
-  width: 170px;
+  width: 100%;
   height: 130px;
   border-radius: 30px;
   cursor: pointer;
@@ -32,6 +32,7 @@
   overflow: hidden;
   margin-bottom: 20px;
   border-radius: 30px;
+  width: 100%;
 }
 
 .play-button {
@@ -55,8 +56,8 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  margin-right: -130px;
-  width: 900px;
+
+  width: 80%;
   border-radius: 40px;
 }
 
@@ -109,16 +110,16 @@
   }
 
   .youtube-container {
-    margin-bottom: 20px;
-    margin-left: -35%;
+    margin-bottom: 30px;
+    height: 200px;
 
-    width: 300px;
-    border-radius: 40px;
+    width: 100%;
+    border-radius: 30px;
   }
 
   .subtitle-videos {
-    margin-left: 40px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+    margin-right: 10%;
     font-family: Poppins, ui-sans-serif, system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
       "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",

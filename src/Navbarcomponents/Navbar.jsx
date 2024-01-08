@@ -111,11 +111,17 @@ const Navcontainer = styled.div`
   @media (max-width: 890px) {
       display: flex;
       background-color: #000000; 
-      padding-bottom: 20px;
+      padding-bottom: 30px;
       border-radius: 0px;
       width:100%;
-      margin-top: -80px;
+      position: relative;
 
+
+      .navbutton{
+        background-color: #fafafa;
+        color: #000;
+
+      }
       
       
   }

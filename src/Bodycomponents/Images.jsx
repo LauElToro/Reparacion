@@ -23,54 +23,50 @@ export default Images;
 const Imgcontainer = styled.div`
   display: flex;
   @media (max-width: 890px) {
-    margin-top:30px;
+    margin-top: 30px;
     height: 370px;
     width: 350px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .image1 {
     @media (max-width: 890px) {
-      height: 130px;
-      width: 170px;
+      height: 200px;
+      width: 100%;
     }
     height: 300px;
-    width: 500px;
-    padding-bottom:20px;
+    width: 400px;
+    padding-bottom: 20px;
   }
 
   .image2 {
     @media (max-width: 890px) {
-        height: 150px;
-        width: 160px;
-        margin-left: 5%;
-      }
+      height: 200px;
+      width: 100%;
+    }
     height: 300px;
     width: 400px;
   }
 
   .image3 {
     @media (max-width: 890px) {
-        height: 300px;
-        width: 150px;
-        position:relative;
-        top:50px;
-        margin-right: 8%;
-      }
-      position:relative;
-      top:80px;
-    height: 715px;
-    width: 600px;
-    margin-right: 100px;
+      height: 400px;
+      width: 180px;
+      position: relative;
+      margin-left: 10px;
+    }
+
+    height: 615px;
+    width: 400px;
+    margin-left: 10px;
   }
 
   .subcontainerimg {
-    @media  (max-width: 890px) {
-        margin-left:0px;
+    @media (max-width: 890px) {
+      margin-left: 0px;
     }
-    display: block;
-    margin-left: 90px;
+    display: grid;
   }
 `;

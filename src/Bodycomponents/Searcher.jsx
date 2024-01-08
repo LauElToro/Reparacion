@@ -21,7 +21,7 @@ const Searchcontainer = styled.div`
   @media (max-width: 890px) {
     display: block;
     padding-top: 30px;
-    margin-left: 22%;
+    margin-left: 25%;
   }
 
   .searchbtn {
