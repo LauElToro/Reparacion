@@ -3,7 +3,6 @@ import { useForm } from "../hook/useForm";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
 
-
 export const Register = () => {
   const navigate = useNavigate();
 
@@ -24,7 +23,6 @@ export const Register = () => {
 
     onResetForm();
   };
-
 
   return (
     <>
@@ -48,9 +46,7 @@ export const Register = () => {
             </div>
 
             <div className="input">
-              <label htmlFor="password">
-                Password:
-              </label>
+              <label htmlFor="password">Password:</label>
 
               <input
                 type="password"
@@ -86,7 +82,7 @@ const Contenedorform = styled.div`
     "Noto Color Emoji";
 
   h1 {
-    margin-top:150px;
+    margin-top: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,7 +97,10 @@ const Contenedorform = styled.div`
     color: #111827;
   }
 
-
+  form {
+    margin-top: 600px;
+    width: 100%;
+  }
 
   label {
     margin-left: 6px;

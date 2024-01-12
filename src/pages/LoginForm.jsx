@@ -3,7 +3,6 @@ import { useForm } from "../hook/useForm";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
 
-
 export const LoginForm = () => {
   const navigate = useNavigate();
 
@@ -22,10 +21,8 @@ export const LoginForm = () => {
       },
     });
 
-
     onResetForm();
   };
-
 
   return (
     <>
@@ -67,7 +64,7 @@ export const LoginForm = () => {
             <button className="formbutton">Entrar</button>
             <p>
               New user? <Link to="/loginform/register">Create a account</Link>
-            </p> 
+            </p>
           </form>
         </div>
       </Contenedorform>
@@ -90,9 +87,8 @@ const Contenedorform = styled.div`
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
 
-
   h1 {
-    margin-top:150px;
+    margin-top: 150px;
     display: flex;
     justify-content: center;
     font-family: Poppins, ui-sans-serif, system-ui, -apple-system,
@@ -112,6 +108,8 @@ const Contenedorform = styled.div`
   }
 
   form {
+    margin-top: 600px;
+    width: 100%;
   }
 
   label {
@@ -141,7 +139,6 @@ const Contenedorform = styled.div`
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
   }
-
 
   .formbutton {
     height: 50px;
