@@ -28,10 +28,15 @@
   top: 90px;
 }
 
+@media (max-width: 720px) {
+  .mapa-container {
+    display: none;
+  }
+}
+
 .info-container {
   height: 224vh;
 }
-
 
 .sin-decoracion {
   text-decoration: none;

@@ -9,8 +9,6 @@ import auto4 from "../imagenescar/auto4.jpg";
 import silueta from "../imagenes/silueta.jpg";
 
 function PageCar() {
-
- 
   const [inputValue2, setInputValue2] = useState("");
 
   const handleChange2 = (e) => {
@@ -101,15 +99,7 @@ function PageCar() {
   };
 
   return (
-    <div className="pagecar-container" >
-      <div className="head-pagecar">
-        <img className="img-auto1" src={auto1} alt="" />
-        <img className="img-auto2" src={auto2} alt="" />
-        <div className="head2-pagecar">
-          <img className="img-auto3" src={auto3} alt="" />
-          <img className="img-auto4" src={auto4} alt="" />
-        </div>
-      </div>
+    <div className="pagecar-container">
       <div className="formcar">
         {
           <form className="form">
@@ -248,6 +238,15 @@ function PageCar() {
           </form>
         }
       </div>
+      <div className="head-pagecar">
+        <img className="img-auto1" src={auto1} alt="" />
+        <img className="img-auto2" src={auto2} alt="" />
+        <div className="head2-pagecar">
+          <img className="img-auto3" src={auto3} alt="" />
+          <img className="img-auto4" src={auto4} alt="" />
+        </div>
+      </div>
+
       <div className="carta-auto-contenedor">
         <div>
           <div className="propietario-auto">

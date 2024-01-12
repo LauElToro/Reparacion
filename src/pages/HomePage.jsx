@@ -161,7 +161,10 @@ const Contenedorhome = styled.div`
   position: static;
   @media (max-width: 890px) {
     .carousel {
-      display: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: -100px;
     }
   }
   .wordimg {
@@ -180,11 +183,19 @@ const Contenedorhome = styled.div`
     align-items: center;
     text-align: start;
   }
+
+  @media (max-width: 890px) {
+    .wordimg {
+      display: flex;
+      left: 0;
+      justify-content: center;
+      margin-left: 10%;
+      font-size: 50px;
+    }
 `;
 
 const Imagecontainer = styled.div`
   position: relative;
-  margin-top: 100px;
 
   .animation-img {
     max-width: 100%;
@@ -194,7 +205,7 @@ const Imagecontainer = styled.div`
   .iconlink {
     position: absolute;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     top: 50%;
     left: 16%;
   }
@@ -225,5 +236,27 @@ const Imagecontainer = styled.div`
     top: 120px;
     left: 197px;
     color: #efb810;
+  }
+
+  @media (max-width: 890px) {
+    .paragraph {
+      left: 0;
+      margin-left: 10%;
+    }
+
+    .iconlink {
+      position: absolute;
+      display: flex;
+
+      top: 50%;
+      left: 15%;
+    }
+
+    .iconlink2 {
+      position: absolute;
+      display: flex;
+      top: 50%;
+      left: 20%;
+    }
   }
 `;

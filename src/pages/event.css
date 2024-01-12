@@ -5,7 +5,7 @@
 
 .search-event-page {
   position: absolute;
-  top: 70px;
+  margin-top: 90px;
 }
 
 .body-event {
@@ -62,6 +62,9 @@
 
 .carrusel-container {
   margin-top: 50px;
+
+  align-items: center;
+  justify-content: space-around;
 }
 
 .fila {
@@ -71,15 +74,39 @@
   align-items: center;
 }
 
+@media (max-width: 720px) {
+  .filters-container {
+    display: grid;
+    margin-left: -40px;
+    padding-left: 20px;
+  }
+
+  .carrusel-container {
+    margin-top: 50px;
+    display: grid;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .fila {
+    display: grid;
+  }
+
+  .filter-event {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 .capacitycontainer-event {
   position: absolute;
-  z-index:7;
-  background-color:white;
+  z-index: 7;
+  background-color: white;
   top: 710px;
   left: 950px;
-  border-radius:10px;
-  width:330px;  
-  margin-left: -90px; 
+  border-radius: 10px;
+  width: 330px;
+  margin-left: -90px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
+}
