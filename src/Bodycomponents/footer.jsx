@@ -4,7 +4,7 @@ import "./footer.css";
 
 function Footer() {
   return (
-    <div>
+    <div className="futer">
       <hr className="hr-footer" />
       <div className="footer-container">
         <img className="footerimg" src={voyage} alt="" />

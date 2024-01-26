@@ -227,4 +227,16 @@ const DropContainer = styled.nav`
   .dropdown-option {
     padding: 10px;
   }
+
+  @media (max-width: 890px) {
+    .dropdown-menu {
+      margin-left: -120px;
+    }
+
+    .dropdown-container:hover .dropdown-menu {
+      display: grid;
+      align-items: center;
+      text-align: center;
+    }
+  }
 `;

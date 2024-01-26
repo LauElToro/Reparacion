@@ -24,8 +24,8 @@
 }
 
 .mapa-container {
-  position: sticky;
-  top: 90px;
+  position: relative;
+  top: 250px;
 }
 
 @media (max-width: 720px) {
@@ -35,7 +35,7 @@
 }
 
 .info-container {
-  height: 224vh;
+  height: 324vh;
 }
 
 .sin-decoracion {

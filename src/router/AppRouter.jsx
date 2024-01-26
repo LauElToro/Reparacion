@@ -53,7 +53,7 @@ export const AppRouter = () => {
         <Route path="/reservador" element={<Reservador />} />
         <Route path="/hotelindividual" element={<Hotelindividual />} />
       </Routes>
+      <Footer />
     </>
   );
-  <Footer />;
 };

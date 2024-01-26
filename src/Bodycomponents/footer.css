@@ -71,4 +71,8 @@
     margin-left: 18%;
     box-shadow: 1px 2px;
   }
+
+  .futer {
+    display: none;
+  }
 }

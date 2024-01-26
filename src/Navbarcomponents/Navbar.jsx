@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import voyage from "../imagenes/voyage-united.png";
 import { styled } from "styled-components";
@@ -7,12 +7,36 @@ import Space from "./Space";
 import Tour from "./Tour";
 import Car from "./Car";
 import Event from "./Event";
+import MenuMobile from "../imagenes/menu.png";
 
 export const Navbar = () => {
-  const { state } = useLocation();
+  const { state, pathname } = useLocation();
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const displayN = document.getElementById("opennav");
+  const cerrarMenu = document.getElementById("cerrar");
+  const menuH = document.getElementById("hamburger");
+
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const clase = () => {
+    displayN.style.display = "block";
+    displayN.style.position = "absolute";
+    displayN.style.backgroundColor = "white";
+    cerrarMenu.style.display = "block";
+    menuH.style.display = "none";
+  };
+
+  const cierre = () => {
+    displayN.style.display = "none";
+
+    cerrarMenu.style.display = "none";
+    menuH.style.display = "block";
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -24,7 +48,7 @@ export const Navbar = () => {
     });
   };
 
-  const hideNavbar = state?.logged && location.pathname === "/Perfil";
+  const hideNavbar = state?.logged && pathname === "/Perfil";
 
   return (
     <>
@@ -34,14 +58,27 @@ export const Navbar = () => {
             <Link to="/" state={{ logged: state?.logged }}>
               <img className="imgvoyage" src={voyage} alt="" />
             </Link>
-            <div className="nav-components">
+            <div className="nav-components " id="opennav">
               <Hotel />
               <Space />
               <Tour />
               <Car />
               <Event />
             </div>
+            <Link>
+              <img
+                className="img-menu active "
+                onClick={clase}
+                src={MenuMobile}
+                alt=""
+                id="hamburger"
+              />
+            </Link>
+            <div className="inactive equis" id="cerrar" onClick={cierre}>
+              <h1> X </h1>
+            </div>
           </header>
+
           {state?.logged ? (
             <div>
               <div className="buttonmenu" onClick={toggleMenu}>
@@ -92,6 +129,7 @@ export const Navbar = () => {
           )}
         </Navcontainer>
       )}
+
       <Outlet />
     </>
   );
@@ -105,26 +143,8 @@ const Navcontainer = styled.div`
   position: fixed;
   width: 100%;
   z-index: 200;
-  backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
-  @media (max-width: 890px) {
-      display: flex;
-      background-color: #000000; 
-      padding-bottom: 30px;
-      border-radius: 0px;
-      width:100%;
-      position: relative;
-
-
-      .navbutton{
-        background-color: #fafafa;
-        color: #000;
-
-      }
-      
-      
-  }
 
   header {
     display: flex;
@@ -133,7 +153,6 @@ const Navcontainer = styled.div`
   }
 
   .nav-components {
-    
     display: flex;
     margin-top: 30px;
     margin-left: 130px;
@@ -142,15 +161,63 @@ const Navcontainer = styled.div`
     }
   }
 
+  .img-menu {
+    display: none;
+  }
+
+
+  @media (max-width: 890px) {
+    display: flex;
+    background-color: #fafafa;
+    padding-bottom: 30px;
+    border-radius: 0px;
+    width: 100%;
+    position: relative;
+
+    .navbutton {
+      display: none;
+    }
+
+    .nav-components {
+  
+      display: none;
+      margin-top: 300px;
+      align-items: center;
+      margin-left:250px;
+    }
+
+    .img-menu {
+      display: none;
+      height: 30px;
+      margin-top: 20px;
+      margin-left: 150px;
+    }
+
+    .active {
+    display: block;
+    }
+  }
+
+  .inactive {
+    display: none;
+  }
+
+  .equis{
+    margin-left: 170px;
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: bolder;
+  }
+
   .imgvoyage {
     height: 80px;
-    margin-left: 50px ;
-    margin-top:5px;
-    
+    margin-left: 50px;
+    margin-top: 5px;
     border-radius: 15px;
     color: #000000;
   }
 
+  
   .navbutton {
     font-family: Poppins, ui-sans-serif, system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
@@ -163,7 +230,7 @@ const Navcontainer = styled.div`
     padding: 0.2em 0.4em;
     border-radius: 30px;
     margin-right: 20px;
-    margin-left: 50px ;
+    margin-left: 50px;
     margin-top: 20px;
     width: 110px;
     weight: 500;
@@ -178,10 +245,9 @@ const Navcontainer = styled.div`
     }
   }
 
-
   .buttonmenu {
-    display:flex;
-    justify-content:center;
+    display: flex;
+    justify-content: center;
     font-family: Poppins, ui-sans-serif, system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
       "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -206,7 +272,7 @@ const Navcontainer = styled.div`
   .menu {
     text-decoration: none;
     position: absolute;
-    top:70px;
+    top: 70px;
     right: 5px;
     background-color: #ffff;
     border: 1px solid #ccc;
@@ -216,7 +282,10 @@ const Navcontainer = styled.div`
     flex-direction: column;
     min-width: 150px;
     z-index: 1;
-    color:black;
+    color: black;
+
+    
+       
 
     .itemsmenu {
       text-decoration: none;
