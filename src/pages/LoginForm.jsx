@@ -24,6 +24,21 @@ export const LoginForm = () => {
     onResetForm();
   };
 
+  const login = (email, password) => {
+    const url = "https://h38lxmmc-3000.brs.devtunnels.ms/api/user";
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, password: password }),
+    };
+
+    fetch(url, requestOptions)
+      .then((res) => res.json())
+      .catch((error) => console.error("Error:", error))
+      .then((response) => console.log("Success:", response));
+  };
+
   return (
     <>
       <Contenedorform>
@@ -61,7 +76,9 @@ export const LoginForm = () => {
                 autoComplete="off"
               />
             </div>
-            <button className="formbutton">Entrar</button>
+            <button className="formbutton" onClick={login}>
+              Entrar
+            </button>
             <p>
               New user? <Link to="/loginform/register">Create a account</Link>
             </p>

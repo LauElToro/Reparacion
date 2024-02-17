@@ -1,10 +1,12 @@
-import React from 'react';
-import VideoPlayer from './VideoPlayer';
+import React from "react";
+import VideoPlayer from "./VideoPlayer";
 
 function Videos() {
   return (
-    <div><VideoPlayer/></div>
-  )
+    <div>
+      <VideoPlayer />
+    </div>
+  );
 }
 
-export default Videos
+export default Videos;
