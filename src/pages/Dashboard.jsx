@@ -9,6 +9,8 @@ import voyage3 from "../imagenes/explore.jpg";
 
 export const Dashboard = () => {
   return (
+   
+      
     <section className="seccion-perfil-usuario">
         
         <div className="perfil-usuario-body">
@@ -88,9 +90,39 @@ export const Dashboard = () => {
                     <i className="fas fa-image"></i> Publish
                 </button>
             </div>
+            <div className="perfil-usuario-footer">
+                <ul className="lista-datos">
+                <h3 className='titulo'> BLOG</h3>
+                <br />
+                <img src={voyage3} alt="img-avatar" className='imagen-publicacion' />
+                    
+                    <li><i className="icono fas fa-phone-alt"></i> BLOG image</li>
+                </ul>
+                <ul className="lista-datos">
+                  <br />
+                    <li><i className="icono fas fa-briefcase"></i> Title:</li>
+                    <li><i className="icono fas fa-briefcase"></i>Subtitle:</li>
+                    <li><i className="icono fas fa-briefcase"></i> Information:</li>
+
+                    
+                    
+
+                   
+                    
+                    
+                </ul>
+                <button type="button" className="boton-portada">
+                    <i className="fas fa-image"></i> Edit
+                </button>
+                <button type="button" className="boton-portada">
+                    <i className="fas fa-image"></i> Publish
+                </button>
+            </div>
            
         </div>
     </section>
+    
+
   )
 }
 

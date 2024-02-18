@@ -1,10 +1,13 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+
 import voyage from "../imagenes/silueta.jpg"; 
 import "./perfil.css";
 
+
 export const Perfil = () => {
   return (
+    <>
+    
     <section className="seccion-perfil-usuario">
         <div className="perfil-usuario-header">
             <div className="perfil-usuario-portada">
@@ -53,13 +56,11 @@ export const Perfil = () => {
                     
                 </ul>
             </div>
-            <div className="redes-sociales">
-                <a href="#" className="boton-redes facebook fab fa-facebook-f"><i className="icon-facebook"></i></a>
-                <a href="#" className="boton-redes twitter fab fa-twitter"><i className="icon-twitter"></i></a>
-                <a href="#" className="boton-redes instagram fab fa-instagram"><i className="icon-instagram"></i></a>
-            </div>
+           
         </div>
     </section>
+    </>
+
 );
   
 };

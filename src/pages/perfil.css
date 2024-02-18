@@ -25,7 +25,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    background: linear-gradient(#d3f93a, #fafafa);
+    background: linear-gradient(#fffd81, #fafafa);
     margin-bottom: 1.25rem;
 }
 
