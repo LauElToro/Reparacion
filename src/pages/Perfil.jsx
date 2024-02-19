@@ -1,6 +1,7 @@
 import React from "react";
 
 import voyage from "../imagenes/silueta.jpg"; 
+import edit from "../imagenes/camara.png"
 import "./perfil.css";
 
 
@@ -14,7 +15,7 @@ export const Perfil = () => {
                 <div className="perfil-usuario-avatar">
                     <img src={voyage} alt="img-avatar" />
                     <button type="button" className="boton-avatar">
-                        <i className="fas fa-image"> </i>
+                        <img src={edit} alt="edit-btn" className="pencil"/>
                     </button>
                 </div>
                 

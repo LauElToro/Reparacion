@@ -99,13 +99,7 @@ export const Navbar = () => {
                     >
                       <div>Configuración</div>
                     </Link>
-                    <Link
-                      className="itemsmenu"
-                      to=""
-                      state={{ logged: state?.logged }}
-                    >
-                      <div>Booking History</div>
-                    </Link>
+                    
                     <Link
                       className="itemsmenu"
                       to=""
