@@ -58,6 +58,15 @@ export const Register = () => {
                 autoComplete="off"
               />
             </div>
+            <div className="input">
+              <label htmlFor="ref">Referred:</label>
+
+              <input
+                type="text"
+                name="ref"
+                placeholder="(optional)"
+              />
+            </div>
             <button className="registerbutton">Entrar</button>
           </form>
         </div>
