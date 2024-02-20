@@ -13,6 +13,7 @@ import Reservador from "../pages/Reservador.jsx";
 import React, { useState, useEffect } from "react";
 import Hotelindividual from "../pages/Hotel-individual.jsx";
 import Footer from "../Bodycomponents/footer.jsx";
+import Chat from "../Bodycomponents/Chat.jsx";
 
 export const AppRouter = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 890);
@@ -36,6 +37,7 @@ export const AppRouter = () => {
   return (
     <>
       {showNavbar && (isMobile ? <Navbar /> : <Navbar />)}
+
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/loginForm" element={<LoginForm />} />
@@ -51,6 +53,8 @@ export const AppRouter = () => {
         <Route path="/reservador" element={<Reservador />} />
         <Route path="/hotelindividual" element={<Hotelindividual />} />
       </Routes>
+      <Chat />
+
       <Footer />
     </>
   );
