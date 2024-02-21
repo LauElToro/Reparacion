@@ -1,21 +1,41 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-function DropdownTour() {
+
+function BlogNav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <DropContainer>
       <div className="dropdown-container">
         <div className="dropdown-trigger">
-          <Link to="blog">Blog</Link>
+          Tour{" "}
+          <div className="arrow">
+            <ion-icon name="chevron-down-outline" />
+          </div>
         </div>
+        <ul className="dropdown-menu">
+          <li>
+            <a className="droplink" href="/">
+              Historic places
+            </a>
+          </li>
+          <li>
+            <a className="droplink" href="/">
+              Beachs
+            </a>{" "}
+          </li>
+          <li>
+            <a className="droplink" href="/">
+              Cities
+            </a>{" "}
+          </li>
+        </ul>
       </div>
     </DropContainer>
   );
 }
 
-export default DropdownTour;
+export default BlogNav;
 
 const DropContainer = styled.nav`
   padding-right: 30px;
@@ -50,10 +70,7 @@ const DropContainer = styled.nav`
       background-color: rgba(128, 128, 128, 0.1);
     }
   }
-  .dropdown-trigger a{
-    color:#111827;
-    text-decoration: none;
-  }
+
   .dropdown-menu {
     font-family: Poppins, ui-sans-serif, system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,

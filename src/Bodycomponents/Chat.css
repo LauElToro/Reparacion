@@ -11,6 +11,7 @@
     border-radius: 80px;
     color: aliceblue;
     border: 0;
+    max-width: 100%;
 }
 
 .contacto {

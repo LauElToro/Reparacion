@@ -14,6 +14,7 @@ import React, { useState, useEffect } from "react";
 import Hotelindividual from "../pages/Hotel-individual.jsx";
 import Footer from "../Bodycomponents/footer.jsx";
 import Chat from "../Bodycomponents/Chat.jsx";
+import Blog from "../pages/blog.jsx";
 
 export const AppRouter = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 890);
@@ -52,6 +53,7 @@ export const AppRouter = () => {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/reservador" element={<Reservador />} />
         <Route path="/hotelindividual" element={<Hotelindividual />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
       <Chat />
 
