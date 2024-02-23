@@ -1,128 +1,103 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./perfil.css";
 import voyage from "../imagenes/angeles.jpg";
 import voyage2 from "../imagenes/img-hotel-individual.jpg"; 
 import voyage3 from "../imagenes/explore.jpg"; 
 
-
-
-
 export const Dashboard = () => {
-  return (
-   
-      
-    <section className="seccion-perfil-usuario">
-        
-        <div className="perfil-usuario-body">
-            <div className="perfil-usuario-bio">
-                <h3 className="titulo">Dashboard</h3>
-                <p className="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div className="perfil-usuario-footer">
-                <ul className="lista-datos">
-                <h3 className='titulo'> LOCATION</h3>
-                <br />
-                <img src={voyage} alt="img-avatar" className='imagen-publicacion' />
-                    
-                    <li><i className="icono fas fa-phone-alt"></i> Place image</li>
-                </ul>
-                <ul className="lista-datos">
-                  <br />
-                    <li><i className="icono fas fa-briefcase"></i> Available dates:</li>
-                    <li><i className="icono fas fa-building"></i> Country:</li>
-
-                    <li><i className="icono fas fa-calendar-alt"></i> Price:</li>
-                    
-                    
-                </ul>
-                <button type="button" className="boton-portada">
-                    <i className="fas fa-image"></i> Edit
-                </button>
-                <button type="button" className="boton-portada">
-                    <i className="fas fa-image"></i> Publish
-                </button>
-            </div>
-            <div className="perfil-usuario-footer">
-                <ul className="lista-datos">
-                <h3 className='titulo'> HOTELS</h3>
-                <br />
-                <img src={voyage2} alt="img-avatar" className='imagen-publicacion' />
-                    
-                    <li><i className="icono fas fa-phone-alt"></i> Hotel image</li>
-                </ul>
-                <ul className="lista-datos">
-                  <br />
-                    <li><i className="icono fas fa-briefcase"></i> Available dates:</li>
-                    <li><i className="icono fas fa-building"></i> Country:</li>
-
-                    <li><i className="icono fas fa-calendar-alt"></i> Price:</li>
-                    
-                    
-                </ul>
-                <button type="button" className="boton-portada">
-                    <i className="fas fa-image"></i> Edit
-                </button>
-                <button type="button" className="boton-portada">
-                    <i className="fas fa-image"></i> Publish
-                </button>
-            </div>
-            <div className="perfil-usuario-footer">
-                <ul className="lista-datos">
-                <h3 className='titulo'> EVENTS</h3>
-                <br />
-                <img src={voyage3} alt="img-avatar" className='imagen-publicacion' />
-                    
-                    <li><i className="icono fas fa-phone-alt"></i> Event image</li>
-                </ul>
-                <ul className="lista-datos">
-                  <br />
-                    <li><i className="icono fas fa-briefcase"></i> Available dates:</li>
-                    <li><i className="icono fas fa-building"></i> Country:</li>
-
-                    <li><i className="icono fas fa-calendar-alt"></i> Price:</li>
-                    
-                    
-                </ul>
-                <button type="button" className="boton-portada">
-                    <i className="fas fa-image"></i> Edit
-                </button>
-                <button type="button" className="boton-portada">
-                    <i className="fas fa-image"></i> Publish
-                </button>
-            </div>
-            <div className="perfil-usuario-footer">
-                <ul className="lista-datos">
-                <h3 className='titulo'> BLOG</h3>
-                <br />
-                <img src={voyage3} alt="img-avatar" className='imagen-publicacion' />
-                    
-                    <li><i className="icono fas fa-phone-alt"></i> BLOG image</li>
-                </ul>
-                <ul className="lista-datos">
-                  <br />
-                    <li><i className="icono fas fa-briefcase"></i> Title:</li>
-                    <li><i className="icono fas fa-briefcase"></i>Subtitle:</li>
-                    <li><i className="icono fas fa-briefcase"></i> Information:</li>
-
-                    
-                    
-
-                   
-                    
-                    
-                </ul>
-                <button type="button" className="boton-portada">
-                    <i className="fas fa-image"></i> Edit
-                </button>
-                <button type="button" className="boton-portada">
-                    <i className="fas fa-image"></i> Publish
-                </button>
-            </div>
-           
-        </div>
-    </section>
+    const [serviceData, setServiceData] = useState({
+        image: null,
+        availableDates: '',
+        country: '',
+        price: ''
+      });
     
+      const handleChange = e => {
+        setServiceData({
+          ...serviceData,
+          [e.target.name]: e.target.value
+        });
+      };
+    
+      const handleImageChange = e => {
+        setServiceData({
+          ...serviceData,
+          image: e.target.files[0]
+        });
+      };
+    
+      const handleSubmit = async () => {
+        const formData = new FormData();
+        formData.append('image', serviceData.image);
+        formData.append('availableDates', serviceData.availableDates);
+        formData.append('country', serviceData.country);
+        formData.append('price', serviceData.price);
+        formData.append('section', section);
+        try {
+          const response = await axios.post('http://localhost:9000/api/services', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          });
+          console.log(response.data);
+          // Manejar la respuesta del servidor aquí
+        } catch (error) {
+          console.error('Error submitting service:', error);
+        }
+      };
+  return (
+    <section className="seccion-perfil-usuario">
+      <div className="perfil-usuario-body">
+        <div className="perfil-usuario-bio">
+          <h3 className="titulo">Dashboard</h3>
+          <p className="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
 
+        {/* Sección LOCATION */}
+        <div className="perfil-usuario-footer">
+          <input type="file" onChange={handleImageChange} />
+          <input type="text" name="availableDates" value={serviceData.availableDates} onChange={handleChange} placeholder="Available Dates" />
+          <input type="text" name="country" value={serviceData.country} onChange={handleChange} placeholder="Country" />
+          <input type="text" name="price" value={serviceData.price} onChange={handleChange} placeholder="Price" />
+          <button type="button" className="boton-portada" onClick={() => handleSubmit('location')}>
+            <i className="fas fa-image"></i> Publish
+          </button>
+        </div>
+
+        {/* Sección HOTELS */}
+        <div className="perfil-usuario-footer">
+          <input type="file" onChange={handleImageChange} />
+          <input type="text" name="availableDates" value={serviceData.availableDates} onChange={handleChange} placeholder="Available Dates" />
+          <input type="text" name="country" value={serviceData.country} onChange={handleChange} placeholder="Country" />
+          <input type="text" name="price" value={serviceData.price} onChange={handleChange} placeholder="Price" />
+          <button type="button" className="boton-portada" onClick={() => handleSubmit('hotels')}>
+            <i className="fas fa-image"></i> Publish
+          </button>
+        </div>
+
+        {/* Sección EVENTS */}
+        <div className="perfil-usuario-footer">
+          <input type="file" onChange={handleImageChange} />
+          <input type="text" name="availableDates" value={serviceData.availableDates} onChange={handleChange} placeholder="Available Dates" />
+          <input type="text" name="country" value={serviceData.country} onChange={handleChange} placeholder="Country" />
+          <input type="text" name="price" value={serviceData.price} onChange={handleChange} placeholder="Price" />
+          <button type="button" className="boton-portada" onClick={() => handleSubmit('events')}>
+            <i className="fas fa-image"></i> Publish
+          </button>
+        </div>
+
+        {/* Sección BLOG */}
+        <div className="perfil-usuario-footer">
+          <input type="file" onChange={handleImageChange} />
+          <input type="text" name="availableDates" value={serviceData.availableDates} onChange={handleChange} placeholder="Available Dates" />
+          <input type="text" name="country" value={serviceData.country} onChange={handleChange} placeholder="Country" />
+          <input type="text" name="price" value={serviceData.price} onChange={handleChange} placeholder="Price" />
+          <button type="button" className="boton-portada" onClick={() => handleSubmit('blog')}>
+            <i className="fas fa-image"></i> Publish
+          </button>
+        </div>
+      </div>
+    </section>
   )
 }
 

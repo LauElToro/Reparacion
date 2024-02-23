@@ -1,31 +1,60 @@
-import React from "react";
-import { useForm } from "../hook/useForm";
-import { useNavigate, Link, Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
-  const { email, password, onInputChange, onResetForm } = useForm({
-    email: "",
-    password: "",
-  });
-
-  const onLogin = (e) => {
-    e.preventDefault();
-
-    navigate("/dashboard", {
-      replace: true,
-      state: {
-        logged: true,
-      },
-    });
-
-    onResetForm();
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'email') setEmail(value);
+    if (name === 'password') setPassword(value);
+    if (name === 'verificationCode') setVerificationCode(value);
   };
 
-  const login = (email, password) => {
-    const url = "https://h38lxmmc-3000.brs.devtunnels.ms/api/user";
+  const onLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await loginUser(email, password);
+      console.log(response); // Manejar la respuesta del inicio de sesión
+      // Redirigir al dashboard si el inicio de sesión es exitoso
+      if (response.code === "200") {
+        setShowPopup(true); // Mostrar popup después del inicio de sesión
+      }
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }
+  };
+
+  const verifyLogin = async () => {
+    try {
+      const response = await fetch('http://localhost:9000/verify_login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, token: verificationCode })
+      });
+      const data = await response.json();
+      console.log(data); // Verificar la respuesta del servidor
+      if (data.code === 200) { // Asegúrate de comparar con un número en lugar de una cadena
+        navigate("/perfil"); // Redirigir al usuario al perfil si la verificación es exitosa
+      }
+    } catch (error) {
+      console.error('Error verifying login:', error);
+    }
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
+  const loginUser = async (email, password) => {
+    const url = "http://localhost:9000/login";
 
     const requestOptions = {
       method: "POST",
@@ -33,10 +62,8 @@ export const LoginForm = () => {
       body: JSON.stringify({ email: email, password: password }),
     };
 
-    fetch(url, requestOptions)
-      .then((res) => res.json())
-      .catch((error) => console.error("Error:", error))
-      .then((response) => console.log("Success:", response));
+    const response = await fetch(url, requestOptions);
+    return await response.json();
   };
 
   return (
@@ -45,7 +72,6 @@ export const LoginForm = () => {
         <div className="form">
           <form onSubmit={onLogin}>
             <h1>Login</h1>
-
             <div className="input">
               <label htmlFor="email">Email address:</label>
               <input
@@ -59,13 +85,11 @@ export const LoginForm = () => {
                 autoComplete="off"
               />
             </div>
-
             <div className="input">
               <label htmlFor="password">
                 Password:
                 <a href="">Forgot Password?</a>
               </label>
-
               <input
                 type="password"
                 name="password"
@@ -76,20 +100,32 @@ export const LoginForm = () => {
                 autoComplete="off"
               />
             </div>
-            <button className="formbutton" onClick={login}>
-              Entrar
-            </button>
+            <button className="formbutton" type="submit">Login</button>
             <p>
-              New user? <Link to="/loginform/register">Create a account</Link>
+              New user? <Link to="/loginform/register">Create an account</Link>
             </p>
           </form>
         </div>
       </Contenedorform>
+      {showPopup && (
+        <Popup>
+          <PopupContent>
+            <PopupTitle>Verification Code</PopupTitle>
+            <PopupInput
+              placeholder="Enter verification code"
+              type="text"
+              name="verificationCode"
+              value={verificationCode}
+              onChange={onInputChange}
+            />
+            <PopupButton onClick={verifyLogin}>Verify</PopupButton>
+          </PopupContent>
+        </Popup>
+      )}
       <Outlet />
     </>
   );
 };
-
 const Contenedorform = styled.div`
   display: flex;
   align-items: center;
@@ -171,5 +207,49 @@ const Contenedorform = styled.div`
     &:hover {
       background-color: rgba(45, 55, 130, 1);
     }
+  }
+`;
+
+// Styled components for Popup
+const Popup = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* Ensure the popup is above other elements */
+`;
+
+const PopupContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const PopupTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 10px;
+`;
+
+const PopupMessage = styled.p`
+  font-size: 16px;
+  margin-bottom: 20px;
+`;
+
+const PopupButton = styled.button`
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
   }
 `;

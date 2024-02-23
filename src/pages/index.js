@@ -5,10 +5,3 @@ export * from "./HomePage";
 export * from "./Perfil";
 export * from "./Configuracion";
 export * from './Reservador';
-
-
-
-
-
-
-
