@@ -54,7 +54,7 @@ const LoginForm = ({ onLogin }) => {
         </div>
         <button className="formbutton">Entrar</button>
         <p>
-          New user? <Link to="/loginform/register">Create an account</Link>
+          New user? <Link to="/register">Create an account</Link>
         </p>
       </form>
     </div>

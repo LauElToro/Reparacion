@@ -49,10 +49,6 @@ export const LoginForm = () => {
     }
   };
 
-  const closePopup = () => {
-    setShowPopup(false);
-  };
-
   const loginUser = async (email, password) => {
     const url = "http://localhost:9000/login";
 
@@ -102,7 +98,7 @@ export const LoginForm = () => {
             </div>
             <button className="formbutton" type="submit">Login</button>
             <p>
-              New user? <Link to="/loginform/register">Create an account</Link>
+              New user? <Link to="/register">Create an account</Link>
             </p>
           </form>
         </div>
@@ -111,7 +107,7 @@ export const LoginForm = () => {
         <Popup>
           <PopupContent>
             <PopupTitle>Verification Code</PopupTitle>
-            <PopupInput
+            <input
               placeholder="Enter verification code"
               type="text"
               name="verificationCode"

@@ -52,26 +52,9 @@ export const RegisterForm = () => {
       });
       const data = await response.json();
     // Redirigir al usuario al formulario de inicio de sesión
-    navigate("/loginform");
+    navigate("/login");
     } catch (error) {
       console.error('Error verifying code:', error);
-    }
-  };
-
-  const verifyLogin = async () => {
-    try {
-      const response = await fetch('http://localhost:9000/verify_login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, token: verificationCode })
-      });
-      const data = await response.json();
-    // Redirigir al usuario al formulario de inicio de sesión
-    navigate("/perfil");
-    } catch (error) {
-      console.error('Error verifying login:', error);
     }
   };
 

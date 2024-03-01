@@ -43,7 +43,7 @@ export const Navbar = () => {
   };
 
   const onLogout = () => {
-    navigate("/loginform", {
+    navigate("/login", {
       replace: true,
     });
   };
@@ -118,7 +118,7 @@ export const Navbar = () => {
             </div>
           ) : (
             <nav>
-              <Link to="loginform">
+              <Link to="login">
                 <button className="navbutton">Sign Up</button>
               </Link>
             </nav>

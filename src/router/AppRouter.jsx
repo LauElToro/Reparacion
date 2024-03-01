@@ -35,12 +35,12 @@ export const AppRouter = () => {
 
   return (
     <>
-      {showNavbar && (isMobile ? <Navbar /> : <Navbar />)}
+       <Navbar />
 
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="/loginForm" element={<LoginForm />} />
-        <Route path="/loginForm/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm />} />
         <Route
           path="/dashboard"
           element={
