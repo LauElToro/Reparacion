@@ -3,12 +3,12 @@ import { Link, useNavigate, Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 export const LoginForm = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   const [verificationCode, setVerificationCode] = useState('');
   const [showPopup, setShowPopup] = useState(false);
-
+  
   const onInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'email') setEmail(value);
@@ -17,14 +17,16 @@ export const LoginForm = () => {
   };
 
   const onLogin = async (e) => {
+    
     e.preventDefault();
     try {
       const response = await loginUser(email, password);
-      console.log(response); // Manejar la respuesta del inicio de sesión
-      // Redirigir al dashboard si el inicio de sesión es exitoso
-      if (response.code === "200") {
+      console.log(response);
+
+       // Manejar la respuesta del inicio de sesión
+      // Redirigir al dashboard si el inicio de sesión es exitoso      
         setShowPopup(true); // Mostrar popup después del inicio de sesión
-      }
+      
     } catch (error) {
       console.error('Error logging in:', error);
     }
@@ -67,7 +69,8 @@ export const LoginForm = () => {
       <Contenedorform>
         <div className="form">
           <form onSubmit={onLogin}>
-            <h1>Login</h1>
+            <h1>Log in</h1>
+
             <div className="input">
               <label htmlFor="email">Email address:</label>
               <input
@@ -81,11 +84,9 @@ export const LoginForm = () => {
                 autoComplete="off"
               />
             </div>
+
             <div className="input">
-              <label htmlFor="password">
-                Password:
-                <a href="">Forgot Password?</a>
-              </label>
+              <label htmlFor="password">Password:</label>
               <input
                 type="password"
                 name="password"
@@ -96,25 +97,29 @@ export const LoginForm = () => {
                 autoComplete="off"
               />
             </div>
-            <button className="formbutton" type="submit">Login</button>
             <p>
               New user? <Link to="/register">Create an account</Link>
             </p>
+
+            <button className="registerbutton" type="submit">Log in</button>
+            
           </form>
         </div>
-      </Contenedorform>
+        </Contenedorform>
       {showPopup && (
         <Popup>
           <PopupContent>
-            <PopupTitle>Verification Code</PopupTitle>
+            <PopupTitle>Email enviado correctamente</PopupTitle>
+            {/* Cambiado a un input para ingresar el código de verificación */}
             <input
-              placeholder="Enter verification code"
               type="text"
-              name="verificationCode"
               value={verificationCode}
               onChange={onInputChange}
+              name="verification"
+              placeholder="Enter verification code"
             />
-            <PopupButton onClick={verifyLogin}>Verify</PopupButton>
+            {/* Botón para enviar y hacer la petición a la API */}
+            <PopupButton onClick={verifyLogin}>Enviar</PopupButton>
           </PopupContent>
         </Popup>
       )}
@@ -122,6 +127,7 @@ export const LoginForm = () => {
     </>
   );
 };
+
 const Contenedorform = styled.div`
   display: flex;
   align-items: center;
@@ -139,6 +145,7 @@ const Contenedorform = styled.div`
   h1 {
     margin-top: 150px;
     display: flex;
+    align-items: center;
     justify-content: center;
     font-family: Poppins, ui-sans-serif, system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
@@ -149,11 +156,6 @@ const Contenedorform = styled.div`
     line-height: 55px;
     font-weight: 600;
     color: #111827;
-  }
-
-  p {
-    display: flex;
-    justify-content: center;
   }
 
   form {
@@ -170,12 +172,6 @@ const Contenedorform = styled.div`
     font-weight: 500;
   }
 
-  a {
-    text-decoration: none;
-    color: #1f2937;
-    font-weight: 500;
-  }
-
   input {
     height: 40px;
     width: 420px;
@@ -189,7 +185,10 @@ const Contenedorform = styled.div`
     }
   }
 
-  .formbutton {
+  input:focus {
+  }
+
+  .registerbutton {
     height: 50px;
     width: 420px;
     margin: 20px 0;

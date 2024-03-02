@@ -193,6 +193,11 @@ body {
        
 }
 
+.imgblog{
+    width: 290px;
+    margin-left: 50px;
+}
+
 /* adactacion a dispositivos */
 @media (max-width: 750px) {
     .seccion-perfil-usuario .lista-datos {

@@ -9,6 +9,11 @@ import Car from "./Car";
 import Event from "./Event";
 import MenuMobile from "../imagenes/menu.png";
 import BlogNav from "./BlogNav";
+
+
+
+
+
 export const Navbar = () => {
   const { state, pathname } = useLocation();
   const navigate = useNavigate();
@@ -64,7 +69,7 @@ export const Navbar = () => {
               <Tour />
               <Car />
               <Event />
- <BlogNav />
+              <BlogNav />
 
             </div>
             <Link>
