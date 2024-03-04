@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate, Outlet } from "react-router-dom";
 import styled from "styled-components";
 
-export const LoginForm = () => {
+
+export const LoginForm = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
   const [verificationCode, setVerificationCode] = useState('');
   const [showPopup, setShowPopup] = useState(false);
-  
+  const navigate = useNavigate();
+
   const onInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'email') setEmail(value);
@@ -17,15 +18,17 @@ export const LoginForm = () => {
   };
 
   const onLogin = async (e) => {
-    
     e.preventDefault();
     try {
       const response = await loginUser(email, password);
       console.log(response);
-
-       // Manejar la respuesta del inicio de sesión
-      // Redirigir al dashboard si el inicio de sesión es exitoso      
-        setShowPopup(true); // Mostrar popup después del inicio de sesión
+      
+      // Guardar el token de autenticación en localStorage
+      localStorage.setItem('token', response.token);
+      // Actualizar el estado de autenticación
+      setIsAuthenticated(true);
+      
+      setShowPopup(true); 
       
     } catch (error) {
       console.error('Error logging in:', error);
@@ -34,17 +37,27 @@ export const LoginForm = () => {
 
   const verifyLogin = async () => {
     try {
+      const sessionToken = localStorage.getItem('token');
       const response = await fetch('http://localhost:9000/verify_login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${sessionToken}`
         },
         body: JSON.stringify({ email, token: verificationCode })
       });
+  
+      if (!response.ok) {
+        throw new Error('Failed to verify login');
+      }
+  
       const data = await response.json();
-      console.log(data); // Verificar la respuesta del servidor
-      if (data.code === 200) { // Asegúrate de comparar con un número en lugar de una cadena
-        navigate("/perfil"); // Redirigir al usuario al perfil si la verificación es exitosa
+      console.log(data);
+  
+      if (data.code === 200) {
+        navigate("/perfil");
+      } else {
+        console.error('Error verifying login:', data.message);
       }
     } catch (error) {
       console.error('Error verifying login:', error);
@@ -105,20 +118,18 @@ export const LoginForm = () => {
             
           </form>
         </div>
-        </Contenedorform>
+      </Contenedorform>
       {showPopup && (
         <Popup>
           <PopupContent>
             <PopupTitle>Email enviado correctamente</PopupTitle>
-            {/* Cambiado a un input para ingresar el código de verificación */}
             <input
-              type="text"
+              type="number"
               value={verificationCode}
               onChange={onInputChange}
-              name="verification"
+              name="verificationCode"
               placeholder="Enter verification code"
             />
-            {/* Botón para enviar y hacer la petición a la API */}
             <PopupButton onClick={verifyLogin}>Enviar</PopupButton>
           </PopupContent>
         </Popup>

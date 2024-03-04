@@ -1,6 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Navbar } from "../Navbarcomponents/Navbar.jsx";
-import { PrivateRoute } from "./PrivateRouter.jsx";
 import Reservador from "../pages/Reservador.jsx";
 import React, { useState, useEffect } from "react";
 import Hotelindividual from "../pages/Hotel-individual.jsx";
