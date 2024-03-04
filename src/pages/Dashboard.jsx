@@ -39,7 +39,7 @@ export const Dashboard = () => {
       formData.append('descripcion', blogData.country);
       formData.append('price', blogData.price);
 
-      const response = await fetch('http://localhost:9000/imagen', {
+      const response = await fetch('https://voyagelbackend.onrender.com/imagen', {
         method: 'POST',
         body: formData
       });
@@ -59,7 +59,7 @@ export const Dashboard = () => {
   useEffect(() => {
     const getProductos = async () => {
       try {
-        const response = await fetch('http://localhost:9000/productos');
+        const response = await fetch('https://voyagelbackend.onrender.com/productos');
         if (response.ok) {
           const data = await response.json();
           setProductos(data);
@@ -101,7 +101,7 @@ export const Dashboard = () => {
     formData.append('descripcion', blogData.country);
     formData.append('price', blogData.price);
 
-    const response = await fetch(`http://localhost:9000/productos/${editingProductId}`, {
+    const response = await fetch(`https://voyagelbackend.onrender.com/productos/${editingProductId}`, {
       method: 'PUT',
       body: formData
     });

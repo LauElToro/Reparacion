@@ -31,7 +31,7 @@ export const RegisterForm = () => {
   };
 
   const registerUser = async (email, codigoReferido) => {
-    const response = await fetch('http://localhost:9000/register', {
+    const response = await fetch('https://voyagelbackend.onrender.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ export const RegisterForm = () => {
 
   const verifyCode = async () => {
     try {
-      const response = await fetch('http://localhost:9000/verify', {
+      const response = await fetch('https://voyagelbackend.onrender.com/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

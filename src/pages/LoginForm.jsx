@@ -38,7 +38,7 @@ export const LoginForm = ({ setIsAuthenticated }) => {
   const verifyLogin = async () => {
     try {
       const sessionToken = localStorage.getItem('token');
-      const response = await fetch('http://localhost:9000/verify_login', {
+      const response = await fetch('https://voyagelbackend.onrender.com/verify_login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export const LoginForm = ({ setIsAuthenticated }) => {
   };
 
   const loginUser = async (email, password) => {
-    const url = "http://localhost:9000/login";
+    const url = "https://voyagelbackend.onrender.com/login";
 
     const requestOptions = {
       method: "POST",

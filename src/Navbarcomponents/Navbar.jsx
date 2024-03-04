@@ -20,7 +20,7 @@ export const Navbar = () => {
 
   const onLogout = async () => {
     try {
-      const response = await fetchWithSession('http://localhost:9000/logout', {
+      const response = await fetchWithSession('https://voyagelbackend.onrender.com/logout', {
         method: 'GET',
       });
       
