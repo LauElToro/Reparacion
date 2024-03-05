@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Suggestion1 from "./Tarjetssuggestiondestin/Suggestion1";
-import Suggestion2 from "./Tarjetssuggestiondestin/Suggestion2";
-import Suggestion3 from "./Tarjetssuggestiondestin/Suggestion3";
-import Suggestion4 from "./Tarjetssuggestiondestin/Suggestion4";
+
 
 function Tarjetsuggestiondestins() {
   return (
@@ -14,9 +12,9 @@ function Tarjetsuggestiondestins() {
       </div>
       <div className="suggestcontainer">
         <Suggestion1 />
-        <Suggestion2 />
-        <Suggestion3 />
-        <Suggestion4 />
+        <Suggestion1 />
+        <Suggestion1 />
+        <Suggestion1 />
       </div>
     </Tarjetstopdestinscontainer>
   );

@@ -1,28 +1,5 @@
 import React, { useState } from "react";
-import Carrousel1 from "./Tarjetshotel1/Tarjet1";
-import Carrousel2 from "./Tarjetshotel1/Tarjet2";
-import Carrousel3 from "./Tarjetshotel1/Tarjet3";
-import Carrousel4 from "./Tarjetshotel1/Tarjet4";
-import Carrousel5 from "./Tarjetshotel1/Tarjet5";
-import Carrousel6 from "./Tarjetshotel1/Tarjet6";
-import Carrousel7 from "./Tarjetshotel1/Tarjet7";
-import Carrousel8 from "./Tarjetshotel1/Tarjet8";
-import Tarjet2carrousel1 from "./Tarjetshotel2/Tarjet2.1";
-import Tarjet2carrousel2 from "./Tarjetshotel2/Tarjet2.2";
-import Tarjet2carrousel3 from "./Tarjetshotel2/Tarjet2.3";
-import Tarjet2carrousel4 from "./Tarjetshotel2/Tarjet2.4";
-import Tarjet2carrousel5 from "./Tarjetshotel2/Tarjet2.5";
-import Tarjet2carrousel6 from "./Tarjetshotel2/Tarjet2.6";
-import Tarjet2carrousel7 from "./Tarjetshotel2/Tarjet2.7";
-import Tarjet2carrousel8 from "./Tarjetshotel2/Tarjet2.8";
-import Tarjet3carrousel1 from "./Tarjetshotel3/Tarjet3.1";
-import Tarjet3carrousel2 from "./Tarjetshotel3/Tarjet3.2";
-import Tarjet3carrousel3 from "./Tarjetshotel3/Tarjet3.3";
-import Tarjet3carrousel4 from "./Tarjetshotel3/Tarjet3.4";
-import Tarjet3carrousel5 from "./Tarjetshotel3/Tarjet3.5";
-import Tarjet3carrousel6 from "./Tarjetshotel3/Tarjet3.6";
-import Tarjet3carrousel7 from "./Tarjetshotel3/Tarjet3.7";
-import Tarjet3carrousel8 from "./Tarjetshotel3/Tarjet3.8";
+import CardHotel from "./Tarjetshotel1/CardHotel"
 import styled from "styled-components";
 
 function Tarjets() {
@@ -60,17 +37,19 @@ function Tarjets() {
         <Tarjetscontainer>
           <Carrouselscontainers>
             <div className="container1">
-              <Carrousel1 />
-              <Carrousel2 />
-              <Carrousel3 />
-              <Carrousel4 />
+              <CardHotel />
+              <CardHotel />
+              <CardHotel />
+              <CardHotel />
+              
             </div>
             <br />
             <div className="container2">
-              <Carrousel5 />
-              <Carrousel6 />
-              <Carrousel7 />
-              <Carrousel8 />
+              <CardHotel />
+              <CardHotel />
+              <CardHotel />
+              <CardHotel />
+              
             </div>
           </Carrouselscontainers>
         </Tarjetscontainer>
@@ -80,17 +59,19 @@ function Tarjets() {
         <Tarjetscontainer>
           <Carrouselscontainers>
             <div className="container1">
-              <Tarjet2carrousel1 />
-              <Tarjet2carrousel2 />
-              <Tarjet2carrousel3 />
-              <Tarjet2carrousel4 />
+            <CardHotel />
+            <CardHotel />
+            <CardHotel />
+            <CardHotel />
+             
             </div>
             <br />
             <div className="container2">
-              <Tarjet2carrousel5 />
-              <Tarjet2carrousel6 />
-              <Tarjet2carrousel7 />
-              <Tarjet2carrousel8 />
+            <CardHotel />
+            <CardHotel />
+            <CardHotel />
+            <CardHotel />
+              
             </div>
           </Carrouselscontainers>
         </Tarjetscontainer>
@@ -100,17 +81,17 @@ function Tarjets() {
         <Tarjetscontainer>
           <Carrouselscontainers>
             <div className="container1">
-              <Tarjet3carrousel1 />
-              <Tarjet3carrousel2 />
-              <Tarjet3carrousel3 />
-              <Tarjet3carrousel4 />
+            <CardHotel />
+            <CardHotel />
+            <CardHotel />
+            <CardHotel />
             </div>
             <br />
             <div className="container2">
-              <Tarjet3carrousel5 />
-              <Tarjet3carrousel6 />
-              <Tarjet3carrousel7 />
-              <Tarjet3carrousel8 />
+            <CardHotel />
+            <CardHotel />
+            <CardHotel />
+            <CardHotel />
             </div>
           </Carrouselscontainers>
         </Tarjetscontainer>
