@@ -41,6 +41,7 @@ function PriceHotelForm() {
   };
 
   return (
+    <div className='preciohotel'>
     <form onSubmit={handleSubmit}>
       <label>
         Precio por día:
@@ -69,6 +70,7 @@ function PriceHotelForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

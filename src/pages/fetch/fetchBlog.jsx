@@ -40,6 +40,8 @@ function BlogForm() {
   };
 
   return (
+    <div className='formblog'>
+
     <form  className='titulo-blog'  onSubmit={handleSubmit}>
       <label>
         Título:
@@ -63,6 +65,7 @@ function BlogForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

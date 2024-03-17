@@ -41,6 +41,9 @@ function RoomRatesForm() {
   };
 
   return (
+    <div className='roomrates'>
+
+    
     <form onSubmit={handleSubmit}>
       <label>
         Mínimo de noches:
@@ -69,6 +72,7 @@ function RoomRatesForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

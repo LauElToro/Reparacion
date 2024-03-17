@@ -41,6 +41,8 @@ function CarouselForm() {
   };
 
   return (
+    <div className='carousel'>
+
     <form onSubmit={handleSubmit}>
       <label>
         Ubicación:
@@ -69,6 +71,7 @@ function CarouselForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

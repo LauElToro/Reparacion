@@ -35,6 +35,7 @@ function InfoKnowForm() {
   };
 
   return (
+    <div className='infoknow'>
     <form onSubmit={handleSubmit}>
       <label>
         Política de Cancelación:
@@ -48,6 +49,7 @@ function InfoKnowForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

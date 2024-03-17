@@ -39,6 +39,7 @@ function PickupForm() {
   };
 
   return (
+    <div className='pickup'>
     <form onSubmit={handleSubmit}>
       <label>
         Fecha de recogida:
@@ -62,6 +63,7 @@ function PickupForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

@@ -47,6 +47,7 @@ function TituloHotelForm() {
   };
 
   return (
+    <div className='titulohotel'>
     <form onSubmit={handleSubmit}>
       <label>
         Título del hotel:
@@ -90,6 +91,7 @@ function TituloHotelForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

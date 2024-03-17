@@ -47,6 +47,7 @@ function OwnerForm() {
   };
 
   return (
+    <div className='owner'>
     <form onSubmit={handleSubmit}>
       <label>
         Título del auto:
@@ -90,6 +91,7 @@ function OwnerForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

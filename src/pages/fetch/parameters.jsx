@@ -47,6 +47,7 @@ function ParametersForm() {
   };
 
   return (
+    <div className='parameters'>
     <form onSubmit={handleSubmit}>
       <label>
         Velocidad:
@@ -90,6 +91,7 @@ function ParametersForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

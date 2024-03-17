@@ -39,6 +39,7 @@ function PriceCarForm() {
   };
 
   return (
+    <div className='preciocar'>
     <form onSubmit={handleSubmit}>
       <label>
         Precio por día:
@@ -62,6 +63,7 @@ function PriceCarForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

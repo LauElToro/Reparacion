@@ -35,6 +35,7 @@ function DescriptionForm() {
   };
 
   return (
+    <div className='descripcion'>
     <form onSubmit={handleSubmit}>
       <label>
         Descripción del auto:
@@ -48,6 +49,7 @@ function DescriptionForm() {
       <br />
       <button type="submit">Enviar</button>
     </form>
+    </div>
   );
 }
 

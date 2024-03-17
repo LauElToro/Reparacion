@@ -11,7 +11,7 @@ import { HomePage } from "../pages";
 import { Perfil } from "../pages";
 import { Configuracion } from "../pages";
 import Hotelindividual from "../pages/Hotel-individual.jsx";
-import Dashboard from "../pages/Dashboard.jsx";
+import { Dashboard } from "../pages";
 
 export const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,10 +44,7 @@ export const AppRouter = () => {
           path="/blog"
           element={isLoggedIn ? <Blog /> : <Navigate to="/login" state={{ from: '/blog' }} />}
         />
-        <Route
-          path="/dashboard"
-          element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" state={{ from: '/dashboard' }} />}
-        />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route
           path="/configuracion"
           element={isLoggedIn ? <Configuracion /> : <Navigate to="/login" state={{ from: '/configuracion' }} />}
