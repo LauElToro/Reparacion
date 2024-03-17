@@ -1,80 +1,44 @@
 import React, { useState } from "react";
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-
-export const LoginForm = ({ setIsAuthenticated }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
+const LoginForm = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
+  
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const { email, password } = formData;
 
   const onInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'email') setEmail(value);
-    if (name === 'password') setPassword(value);
-    if (name === 'verificationCode') setVerificationCode(value);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginUser(email, password);
-      console.log(response);
-      
-      // Guardar el token de autenticación en localStorage
-      localStorage.setItem('token', response.token);
-      // Actualizar el estado de autenticación
-      setIsAuthenticated(true);
-      
-      setShowPopup(true); 
-      
-    } catch (error) {
-      console.error('Error logging in:', error);
-    }
-  };
-
-  const verifyLogin = async () => {
-    try {
-      const sessionToken = localStorage.getItem('token');
-      const response = await fetch('https://voyagelbackend.onrender.com/verify_login', {
+      const response = await fetch('http://localhost:9000/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${sessionToken}`
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, token: verificationCode })
+        body: JSON.stringify(formData)
       });
-  
-      if (!response.ok) {
-        throw new Error('Failed to verify login');
-      }
-  
-      const data = await response.json();
-      console.log(data);
-  
-      if (data.code === 200) {
-        navigate("/perfil");
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token;
+        localStorage.setItem('token', token);   
+        setIsAuthenticated(true);
+        navigate('/');
       } else {
-        console.error('Error verifying login:', data.message);
+        const data = await response.json();
+        throw new Error(data.message);
       }
     } catch (error) {
-      console.error('Error verifying login:', error);
+      console.error('Error al iniciar sesión:', error.message);
     }
-  };
-
-  const loginUser = async (email, password) => {
-    const url = "https://voyagelbackend.onrender.com/login";
-
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email, password: password }),
-    };
-
-    const response = await fetch(url, requestOptions);
-    return await response.json();
   };
 
   return (
@@ -115,29 +79,14 @@ export const LoginForm = ({ setIsAuthenticated }) => {
             </p>
 
             <button className="registerbutton" type="submit">Log in</button>
-            
           </form>
         </div>
       </Contenedorform>
-      {showPopup && (
-        <Popup>
-          <PopupContent>
-            <PopupTitle>Email enviado correctamente</PopupTitle>
-            <input
-              type="number"
-              value={verificationCode}
-              onChange={onInputChange}
-              name="verificationCode"
-              placeholder="Enter verification code"
-            />
-            <PopupButton onClick={verifyLogin}>Enviar</PopupButton>
-          </PopupContent>
-        </Popup>
-      )}
-      <Outlet />
     </>
   );
-};
+}
+
+export default LoginForm;
 
 const Contenedorform = styled.div`
   display: flex;

@@ -1,59 +1,72 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { Navbar } from "../Navbarcomponents/Navbar.jsx";
 import Reservador from "../pages/Reservador.jsx";
-import React, { useState, useEffect } from "react";
-import Hotelindividual from "../pages/Hotel-individual.jsx";
 import Footer from "../Bodycomponents/footer.jsx";
 import Chat from "../Bodycomponents/Chat.jsx";
 import Blog from "../pages/blog.jsx";
-import { LoginForm } from "../pages";
-import { Dashboard } from "../pages";
+import LoginForm from "../pages/LoginForm.jsx";
 import { RegisterForm } from "../pages";
 import { HomePage } from "../pages";
 import { Perfil } from "../pages";
 import { Configuracion } from "../pages";
+import Hotelindividual from "../pages/Hotel-individual.jsx";
+import Dashboard from "../pages/Dashboard.jsx";
 
 export const AppRouter = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 890);
-  const [showNavbar, setShowNavbar] = useState(true);
-
-  const location = useLocation();
-  const isPerfil = location.pathname === "/perfil";
-
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 890);
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    checkLoggedIn();
   }, []);
+
+  const checkLoggedIn = () => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+  };
 
   return (
     <>
-       <Navbar />
-
+      <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginForm setIsAuthenticated={setIsLoggedIn} />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route
-          path="/dashboard"
-          element={
-              <Dashboard />
-          }
+          path="/"
+          element={isLoggedIn ? <HomePage /> : <Navigate to="/login" state={{ from: '/' }} />}
         />
-        <Route path="/configuracion" element={<Configuracion />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/reservador" element={<Reservador />} />
-        <Route path="/hotelindividual" element={<Hotelindividual />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route
+          path="/blog"
+          element={isLoggedIn ? <Blog /> : <Navigate to="/login" state={{ from: '/blog' }} />}
+        />
+        <Route
+          path="/dashboard"
+          element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" state={{ from: '/dashboard' }} />}
+        />
+        <Route
+          path="/configuracion"
+          element={isLoggedIn ? <Configuracion /> : <Navigate to="/login" state={{ from: '/configuracion' }} />}
+        />
+        <Route
+          path="/perfil"
+          element={isLoggedIn ? <Perfil /> : <Navigate to="/login" state={{ from: '/perfil' }} />}
+        />
+        <Route
+          path="/reservador"
+          element={isLoggedIn ? <Reservador /> : <Navigate to="/login" state={{ from: '/reservador' }} />}
+        />
+        <Route
+          path="/hotelindividual"
+          element={isLoggedIn ? <Hotelindividual /> : <Navigate to="/login" state={{ from: '/hotelindividual' }} />}
+        />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
       <Chat />
-
       <Footer />
     </>
   );

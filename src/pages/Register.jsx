@@ -1,66 +1,48 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export const RegisterForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [referralCode, setReferralCode] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
-  const popupRef = useRef(null);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    password2: "",
+    referralCode: ""
+  });
+
+  const { email, password, password2, referralCode } = formData;
+
   const navigate = useNavigate();
 
   const onInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'email') setEmail(value);
-    if (name === 'password') setPassword(value);
-    if (name === 'ref') setReferralCode(value);
-    if (name === 'verification') setVerificationCode(value);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onRegister = async (e) => {
     e.preventDefault();
-    try {
-      const response = await registerUser(email, referralCode);
-      console.log(response); // Manejar la respuesta del registro
-      setShowPopup(true); // Mostrar popup después del registro
-    } catch (error) {
-      console.error('Error registering:', error);
-    }
-  };
 
-  const registerUser = async (email, codigoReferido) => {
-    const response = await fetch('https://voyagelbackend.onrender.com/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, codigo_referido: codigoReferido })
-    });
-    return await response.json();
-  };
-
-  const verifyCode = async () => {
     try {
-      const response = await fetch('https://voyagelbackend.onrender.com/verify', {
+      const response = await fetch('http://localhost:9000/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, token: verificationCode })
+        body: JSON.stringify(formData)
       });
-      const data = await response.json();
-    // Redirigir al usuario al formulario de inicio de sesión
-    navigate("/login");
+
+      if (response.ok) {
+        // Registro exitoso
+        navigate('/login');
+      } else {
+        const data = await response.json();
+        throw new Error(data.message);
+      }
     } catch (error) {
-      console.error('Error verifying code:', error);
+      console.error('Error en el registro:', error.message);
+      // Manejar el error (por ejemplo, mostrar un mensaje al usuario)
     }
   };
 
-  const closePopup = () => {
-    setShowPopup(false);
-  };
   return (
     <>
       <Contenedorform>
@@ -94,13 +76,14 @@ export const RegisterForm = () => {
                 autoComplete="off"
               />
             </div>
-            {/* Agregado el campo para repetir la contraseña */}
             <div className="input">
               <label htmlFor="password2">Repeat password:</label>
               <input
                 type="password"
                 name="password2"
                 id="password2"
+                value={password2}
+                onChange={onInputChange}
                 required
                 autoComplete="off"
               />
@@ -109,7 +92,7 @@ export const RegisterForm = () => {
               <label htmlFor="ref">Referred:</label>
               <input
                 type="text"
-                name="ref"
+                name="referralCode"
                 placeholder="(optional)"
                 value={referralCode}
                 onChange={onInputChange}
@@ -119,29 +102,10 @@ export const RegisterForm = () => {
             <button className="registerbutton" type="submit">Register</button>
           </form>
         </div>
-        </Contenedorform>
-      {showPopup && (
-        <Popup ref={popupRef}>
-          <PopupContent>
-            <PopupTitle>Email enviado correctamente</PopupTitle>
-            {/* Cambiado a un input para ingresar el código de verificación */}
-            <input
-              type="text"
-              value={verificationCode}
-              onChange={onInputChange}
-              name="verification"
-              placeholder="Enter verification code"
-            />
-            {/* Botón para enviar y hacer la petición a la API */}
-            <PopupButton onClick={verifyCode}>Enviar</PopupButton>
-          </PopupContent>
-        </Popup>
-      )}
-      <Outlet />
+      </Contenedorform>
     </>
   );
 };
-
 const Contenedorform = styled.div`
   display: flex;
   align-items: center;
