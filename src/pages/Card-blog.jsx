@@ -1,35 +1,48 @@
+import React, { useState, useEffect } from 'react';
 import "./Card-blog.css";
-import playa from "../imagenes/casaplaya.jpg"; 
 
 
-export default function CardBlog(){
-
-   const titulo = "title";
-   const subtitulo = 'subtitle';
-   const texto = 'texto largo de muchas palabras';
-   const imgBlog = playa
 
 
-    return (    
+function CardBlog() {
+  const [blogs, setBlogs] = useState([]);
 
-        <div className="cardBlog">
-              
-              <div className="perfil-usuario-footer">
-                  <ul className="lista-datos">
-                      <li><i className="icono fas fa-map-signs"></i> <h1> {titulo} </h1> </li>
-                      <li><i className="icono fas fa-phone-alt"></i><h6> {subtitulo} </h6></li>
-                     
-                      <li><i className="icono fas fa-building"></i> <p> {texto} </p> </li>
-                  </ul>
-                  
-                  <img className="imgblog" src={imgBlog} alt="" />
-              </div>
-              
-              
-        </div>
-      
-      
-  
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const response = await fetch('/blog');
+
+        if (!response.ok) {
+          throw new Error('Error al obtener los blogs');
+        }
+
+        const data = await response.json();
+        setBlogs(data);
+      } catch (error) {
+        console.error('Error al obtener los blogs:', error);
+        // Aquí puedes manejar el error de alguna manera, como mostrando un mensaje al usuario
+      }
+    }
+
+    fetchBlogs();
+  }, []);
+
+  return (
+    <div>
+      <h1>Listado de Blogs</h1>
+      <ul>
+        {blogs.map((blog) => (
+          <li key={blog.id}>
+            <h2>{blog.titulo}</h2>
+            <p>{blog.descripcion}</p>
+            <p>{blog.Subtitulo}</p>
+            
+             <img src={blog.img} alt={blog.titulo} /> 
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-    
-  }
+}
+
+export default CardBlog;

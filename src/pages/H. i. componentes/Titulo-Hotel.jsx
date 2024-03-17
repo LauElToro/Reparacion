@@ -1,3 +1,4 @@
+import { useState , useEffect } from "react";
 import silueta from "../H. i. componentes/silueta.jpg"
 import Share from "../H. I. SVGS/Share";
 import Heart from "../H. I. SVGS/Heart";
@@ -10,27 +11,44 @@ import "../hotel-individual.css";
 
 function TituloHotel () {
 
-    const Title = "Titulo del Hotel";
-    const stars = '4.5';
-    const ubicacion = 'Buenos Aires';
-    const reviews = 110;
-    const NombreProp = 'Nombre de propietario';
-    const cantPerson = 4;
-    const cantBeds = 4;
-    const cantBaths = 2;
-
-
-
+   
+      const [tituloHotels, setTituloHotels] = useState([]);
+    
+      useEffect(() => {
+        async function fetchTituloHotels() {
+          try {
+            const response = await fetch('http://localhost:9000/tituloHotel');
+    
+            if (!response.ok) {
+              throw new Error('Error al obtener la información del hotel');
+            }
+    
+            const data = await response.json();
+            setTituloHotels(data);
+          } catch (error) {
+            console.error('Error al obtener la información del hotel:', error);
+            // Aquí puedes manejar el error de alguna manera, como mostrando un mensaje al usuario
+          }
+        }
+    
+        fetchTituloHotels();
+      }, []);
+    
+    
 
 
 
     return (
         <>
+         {tituloHotels.map((tituloHotel) => (
+              <div key={tituloHotel.id}>
+             
+             
 
         <div className="propietario-auto">
             <div className="propietario-auto-header">
               <div className="propietario-auto-modelo">
-                {Title}
+                {tituloHotel.Title}
               </div>
               <div className="share-save">
                 <div className="propietario-auto-share">
@@ -51,16 +69,16 @@ function TituloHotel () {
               <div className="iconstar">
                <Star />
               </div>
-              <div className="score-number">{stars}</div>
-              <div className="subtext-carousel">({reviews})</div>
+              <div className="score-number">{tituloHotel.stars}</div>
+              <div className="subtext-carousel">({tituloHotel.reviews})</div>
               <div className="ubicacion">
                <Ubication /> {" "}
-                {ubicacion}
+                {tituloHotel.ubicacion}
               </div>
             </div>
             <div className="propietario-auto-body">
               <img src={silueta} alt="" className="propietario-auto-img" />
-              <div className="propietario-auto-nombre">{NombreProp}</div>
+              <div className="propietario-auto-nombre">{tituloHotel.NombreProp}</div>
             </div>
             <hr className="linea" />
             <div className="propietario-auto-footer">
@@ -68,7 +86,7 @@ function TituloHotel () {
                 <div className="icon-pagecar">
                   <span className="material-icons">people_alt</span>
                 </div>
-                {cantPerson} people
+                {tituloHotel.cantPerson} people
               </div>
               <div className="items-footer">
                 <div className="icon-pagecar">
@@ -80,16 +98,18 @@ function TituloHotel () {
                 <div className="icon-pagecar">
                   <span className="material-icons">bathtub</span>
                 </div>
-                {cantBaths} baths
+                {tituloHotel.cantBaths} baths
               </div>
               <div className="items-footer">
                 <div className="icon-pagecar">
                   <span className="material-icons">meeting_room</span>
                 </div>
-                {cantBeds} bedrooms
+                {tituloHotel.cantBeds} bedrooms
               </div>
             </div>
           </div>
+          </div>
+            ))}
 
         </>
 );

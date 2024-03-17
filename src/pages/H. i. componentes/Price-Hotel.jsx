@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Star from "../H. I. SVGS/Star";
 import Calendar from "../H. I. SVGS/Calendar";
 import DatePicker from "react-datepicker";
@@ -122,33 +122,52 @@ const calculateTotalCapacity = () => {
 };
 
 
+  const [priceHotels, setPriceHotels] = useState([]);
 
-const priceDay = 50;
-const stars = 3.8;
-const reviews= 109;
-const cantNights = 4;
-const serviceCharge= 20;
-const Total = priceDay * cantNights;
-const TotalFull = Total + serviceCharge;
+  useEffect(() => {
+    async function fetchPriceHotels() {
+      try {
+        const response = await fetch('http://localhost:9000/PriceHotel');
 
+        if (!response.ok) {
+          throw new Error('Error al obtener los datos de precios de hoteles');
+        }
 
+        const data = await response.json();
+        setPriceHotels(data);
+      } catch (error) {
+        console.error('Error al obtener los datos de precios de hoteles:', error);
+        // Aquí puedes manejar el error de alguna manera, como mostrando un mensaje al usuario
+      }
+    }
+
+    fetchPriceHotels();
+  }, []);
+
+ 
 
 
 
 
 
 return (
+  <>
+  
+  {priceHotels.map((priceHotel) => (
+    <div key={priceHotel.id}>
+      
+  
     <div className="precio-hotel">
     <div className="precio-auto-header">
       <div className="auto-precio-por-dia">
-        ${priceDay} <div className="precio-total-de-dias">/day </div>
+       <p> ${priceHotel.priceDay}</p> <div className="precio-total-de-dias">/day </div>
       </div>
       <div className="punto-de-encuentro-fecha-ciudad ">
         <div className="iconstar">
           <Star />
         </div>
-        <div className="score-number">{stars}</div>
-        <div className="subtext-carousel">({reviews})</div>
+        <div className="score-number">{priceHotel.stars}</div>
+        <div className="subtext-carousel">({priceHotel.reviews})</div>
       </div>
     </div>
     <div className="precio-auto-calendario">
@@ -312,20 +331,23 @@ return (
     </div>
 
     <div className="contenedor-precio-total-de-dias">
-      <div className="precio-total-de-dias">${priceDay} x {cantNights} nights</div>{" "}
-      <div className="precio-total-de-dias">${Total}</div>
+      <div className="precio-total-de-dias">${priceHotel.priceDay} x {priceHotel.cantNights} nights</div>{" "}
+      <div className="precio-total-de-dias">${priceHotel.Total}</div>
     </div>
     <div className="contenedor-precio-total-de-dias">
       <div className="precio-total-de-dias">Service charge</div>{" "}
-      <div className="precio-total-de-dias">${serviceCharge}</div>
+      <div className="precio-total-de-dias">${priceHotel.serviceCharge}</div>
     </div>
     <hr className="hr-precio-total" />
     <div className="contenedor-precio-auto-total">
-      <div className="precio-auto-total">Total </div>{" "}
-      <div className="precio-auto-total">${TotalFull}</div>
+      <div className="precio-auto-total">Total</div>{" "}
+      <div className="precio-auto-total">${priceHotel.TotalFull}</div>
     </div>
     <div className="precio-auto-boton">Reserve</div>
   </div>
+  </div>
+  ))}
+  </>
 );
 
 }

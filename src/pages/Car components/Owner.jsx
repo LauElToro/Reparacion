@@ -7,26 +7,60 @@ import silueta from "../H. i. componentes/silueta.jpg"
 import Person from "../H. I. SVGS/Person";
 import CarFront from "../H. I. SVGS/Car-Front";
 import Bags from "../H. I. SVGS/Bags";
+import { useState , useEffect } from "react";
 
 
 function Owner (){
 
-  const TitleCar = 'Titulo y modelo auto';
-  const stars = 3.8;
-  const reviews = 101;
-  const location = 'Buenos Aires';
-  const Propiet = 'Nombre dueño';
-  const Seats = 4;
-  const claseAuto = 'Tipo de auto';
-  const Baul = 2;
+  
+
+ 
+
+  const [owner, setOwner] = useState([]);
+
+  useEffect(() => {
+    async function fetchOwners() {
+      try {
+        const response = await fetch('/owner');
+
+        if (!response.ok) {
+          throw new Error('Error al obtener la información del propietario del auto');
+        }
+
+        const data = await response.json();
+        setOwner(data);
+      } catch (error) {
+        console.error('Error al obtener la información del propietario del auto:', error);
+        // Aquí puedes manejar el error de alguna manera, como mostrando un mensaje al usuario
+      }
+    }
+
+    fetchOwners();
+  }, []);
+
+
+
+
 
 
   return (
 
       <>
+       {owner.map((owner) => (
+          <li key={owner.id}>
+            <p>Título del auto: {owner.TitleCar}</p>
+            <p>Estrellas: {owner.stars}</p>
+            <p>Reseñas: {owner.reviews}</p>
+            <p>Ubicación: {owner.location}</p>
+            <p>Propietario: {owner.Propiet}</p>
+            <p>Asientos: {owner.Seats}</p>
+            <p>Clase de auto: {owner.claseAuto}</p>
+            <p>Tamaño del baúl: {owner.Baul}</p>
+          </li>
+        ))}
       <div className="propietario-auto">
             <div className="propietario-auto-header">
-              <div className="propietario-auto-modelo">{TitleCar}</div>
+              <div className="propietario-auto-modelo">{owner.TitleCar}</div>
               <div className="share-save">
                 <div className="propietario-auto-share">
                   <div className="icon-pagecar">
@@ -46,16 +80,16 @@ function Owner (){
               <div className="iconstar">
                 <Star />
               </div>
-              <div className="score-number">{stars}</div>
-              <div className="subtext-carousel">({reviews})</div>
+              <div className="score-number">{owner.stars}</div>
+              <div className="subtext-carousel">({owner.reviews})</div>
               <div className="ubicacion">
                 <Ubication />{" "}
-                {location}
+                {owner.location}
               </div>
             </div>
             <div className="propietario-auto-body">
               <img src={silueta} alt="" className="propietario-auto-img" />
-              <div className="propietario-auto-nombre">{Propiet}</div>
+              <div className="propietario-auto-nombre">{owner.Propiet}</div>
             </div>
             <hr className="linea" />
             <div className="propietario-auto-footer">
@@ -63,19 +97,19 @@ function Owner (){
                 <div className="icon-pagecar">
                   <Person />
                 </div>
-                {Seats} Seats
+                {owner.Seats} Seats
               </div>
               <div className="items-footer">
                 <div className="icon-pagecar">
                   <CarFront />
                 </div>
-                {claseAuto}
+                {owner.claseAuto}
               </div>
               <div className="items-footer">
                 <div className="icon-pagecar">
                   <Bags />
                 </div>
-                {Baul} Bags
+                {owner.Baul} Bags
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import "../pagecar.css";
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Star from "../H. I. SVGS/Star";
@@ -76,32 +76,57 @@ function PriceCar () {
     };
 
 
-    const pricDay = 50;
-    const stars = 3.8;
-    const reviews= 109;
-    const cantDays = 4;
     
-    const Total = pricDay * cantDays;
+    const [priceCars, setPriceCars] = useState([]);
     
-
-
+      useEffect(() => {
+        async function fetchPriceCars() {
+          try {
+            const response = await fetch('http://localhost:9000/priceCar');
+    
+            if (!response.ok) {
+              throw new Error('Error al obtener la información de precios de coches');
+            }
+    
+            const data = await response.json();
+            setPriceCars(data);
+          } catch (error) {
+            console.error('Error al obtener la información de precios de coches:', error);
+            // Aquí puedes manejar el error de alguna manera, como mostrando un mensaje al usuario
+          }
+        }
+    
+        fetchPriceCars();
+      }, []);
+    
+     
+   
+    
 
 
 
     return (
         <>
-                 <div className="precio-auto">
+         {priceCars.map((priceCar) => (
+              <div key={priceCar.id}>
+                <p>Precio por día: {priceCar.pricDay}</p>
+                <p>Estrellas: {priceCar.stars}</p>
+                <p>Reseñas: {priceCar.reviews}</p>
+                <p>Cantidad de días: {priceCar.cantDays}</p>
+                <p>Total: {priceCar.Total}</p>
+              
+           <div className="precio-auto">
             <div className="precio-auto-header">
               <div className="auto-precio-por-dia">
-                ${pricDay} <div className="precio-total-de-dias">/day </div>
+                ${priceCar.pricDay} <div className="precio-total-de-dias">/day </div>
               </div>
               <div className="punto-de-encuentro-fecha-ciudad ">
                 <div className="iconstar">
                   <Star />
                     
                 </div>
-                <div className="score-number">{stars}</div>
-                <div className="subtext-carousel">({reviews})</div>
+                <div className="score-number">{priceCar.stars}</div>
+                <div className="subtext-carousel">({priceCar.reviews})</div>
               </div>
             </div>
             <div className="precio-auto-calendario">
@@ -149,16 +174,18 @@ function PriceCar () {
               )}
             </div>
             <div className="contenedor-precio-total-de-dias">
-              <div className="precio-total-de-dias">$ {pricDay} x {cantDays} day</div>{" "}
-              <div className="precio-total-de-dias">$ {Total}</div>
+              <div className="precio-total-de-dias">$ {priceCar.pricDay} x {priceCar.cantDays} day</div>{" "}
+              <div className="precio-total-de-dias">$ {priceCar.Total}</div>
             </div>
             <hr className="hr-precio-total" />
             <div className="contenedor-precio-auto-total">
               <div className="precio-auto-total">Total </div>{" "}
-              <div className="precio-auto-total">$ {Total}</div>
+              <div className="precio-auto-total">$ {priceCar.Total}</div>
             </div>
             <div className="precio-auto-boton">Reserve</div>
           </div>
+          </div>
+            ))}
           
         </>
     );
