@@ -18,8 +18,8 @@ function CardHotel() {
   const reviews = 20;
 
 
-
-
+ 
+ 
 
   return (
     <div className="container-carrousel">

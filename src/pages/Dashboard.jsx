@@ -6,9 +6,10 @@ import TituloHotelForm from "./fetch/tituloHotel";
 import PriceCarForm from "./Car components/Price-car.jsx";
 import PickupForm from "./fetch/pickUp";
 import ParametersForm from "./fetch/parameters.jsx";
-import Owner from "./Car components/Owner.jsx";
+import Owner from "./fetch/Owner.jsx";
 import InfoKnowForm from "./fetch/infoknow.jsx";
 import DescriptionForm from "./fetch/description.jsx";
+import CarouselForm from "./fetch/carousel.jsx";
 
 
 
@@ -25,6 +26,7 @@ export const Dashboard =  () => {
     <Owner />
     <InfoKnowForm />
     <DescriptionForm />
+    <CarouselForm />
 
     </>
     );
