@@ -1,64 +1,44 @@
-import { useState } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import voyage from "../imagenes/voyage-united.png";
-import { styled } from "styled-components";
 import MenuMobile from "../imagenes/menu.png";
-import fetchWithSession from "../auth";
 import Hotel from "./Hotel";
 import Space from "./Space";
 import Tour from "./Tour";
 import Car from "./Car";
 import Event from "./Event";
 import BlogNav from "./BlogNav";
+import styled from "styled-components";
 
-export const Navbar = () => {
+export const Navbar = ({ isLoggedIn, onLogout }) => {
   const { state } = useLocation();
   const navigate = useNavigate();
-
-  const [isLoggedIn, setIsLoggedIn] = useState(state?.logged || false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const onLogout = async () => {
+  const handleLogout = async () => {
     try {
-      const response = await fetchWithSession('https://voyagelbackend.onrender.com/logout', {
-        method: 'GET',
+      const response = await fetch("http://localhost:9000/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-      
-      if (response.message === 'Logged out!') {
-        setIsLoggedIn(false);
-        navigate('/');
+
+      if (response.ok) {
+        localStorage.removeItem("token");
+        onLogout();
+        console.log("Sesión cerrada exitosamente");
       } else {
-        console.error('Error during logout:', response);
+        const data = await response.json();
+        throw new Error(data.message);
       }
     } catch (error) {
-      console.error('Error during logout:', error);
+      console.error("Error al cerrar sesión:", error.message);
     }
   };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-  };
-
-  const clase = () => {
-    const displayN = document.getElementById("opennav");
-    const cerrarMenu = document.getElementById("cerrar");
-    const menuH = document.getElementById("hamburger");
-
-    displayN.style.display = "block";
-    displayN.style.position = "absolute";
-    displayN.style.backgroundColor = "white";
-    cerrarMenu.style.display = "block";
-    menuH.style.display = "none";
-  };
-
-  const cierre = () => {
-    const displayN = document.getElementById("opennav");
-    const cerrarMenu = document.getElementById("cerrar");
-    const menuH = document.getElementById("hamburger");
-
-    displayN.style.display = "none";
-    cerrarMenu.style.display = "none";
-    menuH.style.display = "block";
   };
 
   return (
@@ -68,26 +48,26 @@ export const Navbar = () => {
           <Link to="/" state={{ logged: isLoggedIn }}>
             <img className="imgvoyage" src={voyage} alt="" />
           </Link>
-          <div className="nav-components " id="opennav">
-              <>
-                <Hotel />
-                <Space />
-                <Tour />
-                <Car />
-                <Event />
-                <BlogNav />
-              </>
+          <div className="nav-components" id="opennav">
+            <>
+              <Hotel />
+              <Space />
+              <Tour />
+              <Car />
+              <Event />
+              <BlogNav />
+            </>
           </div>
           <Link>
             <img
               className="img-menu active "
-              onClick={clase}
               src={MenuMobile}
               alt=""
               id="hamburger"
+              onClick={() => setMenuOpen(true)}
             />
           </Link>
-          <div className="inactive equis" id="cerrar" onClick={cierre}>
+          <div className="inactive equis" id="cerrar" onClick={() => setMenuOpen(false)}>
             <h1> X </h1>
           </div>
         </header>
@@ -98,16 +78,28 @@ export const Navbar = () => {
               Menu
               {menuOpen && (
                 <div className="menu">
-                  <Link className="itemsmenu" to="/Perfil" state={{ logged: state?.logged }}>
+                  <Link
+                    className="itemsmenu"
+                    to="/Perfil"
+                    state={{ logged: state?.logged }}
+                  >
                     <div>Perfil</div>
                   </Link>
-                  <Link className="itemsmenu" to="/Configuracion" state={{ logged: state?.logged }}>
+                  <Link
+                    className="itemsmenu"
+                    to="/Configuracion"
+                    state={{ logged: state?.logged }}
+                  >
                     <div>Configuración</div>
                   </Link>
-                  <Link className="itemsmenu" to="" state={{ logged: state?.logged }}>
+                  <Link
+                    className="itemsmenu"
+                    to=""
+                    state={{ logged: state?.logged }}
+                  >
                     <div>Change password</div>
                   </Link>
-                  <div className="itemsmenu" onClick={onLogout}>
+                  <div className="itemsmenu" onClick={handleLogout}>
                     Log Out
                   </div>
                 </div>
@@ -122,7 +114,6 @@ export const Navbar = () => {
           </nav>
         )}
       </Navcontainer>
-      {!isLoggedIn && <Outlet />}
     </>
   );
 };
