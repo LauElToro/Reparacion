@@ -41,6 +41,7 @@ function PickupForm() {
   return (
     <div className='pickup'>
     <form onSubmit={handleSubmit}>
+      <h1>Pick up Auto</h1>
       <label>
         Fecha de recogida:
         <input type="date" value={datePick} onChange={(e) => setDatePick(e.target.value)} />

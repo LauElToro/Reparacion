@@ -49,6 +49,7 @@ function OwnerForm() {
   return (
     <div className='owner'>
     <form onSubmit={handleSubmit}>
+      <h1>Infomacion Dueño</h1>
       <label>
         Título del auto:
         <input type="text" value={titleCar} onChange={(e) => setTitleCar(e.target.value)} />

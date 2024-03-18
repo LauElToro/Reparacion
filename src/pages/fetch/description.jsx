@@ -37,14 +37,15 @@ function DescriptionForm() {
   return (
     <div className='descripcion'>
     <form onSubmit={handleSubmit}>
+      <h1>Descripcion del auto</h1>
       <label>
-        Descripción del auto:
-        <textarea value={carDescrip} onChange={(e) => setCarDescrip(e.target.value)} />
+        
+        <textarea value={carDescrip} onChange={(e) => setCarDescrip(e.target.value)} placeholder='Introducir Descripción del auto:'/>
       </label>
       <br />
       <label>
-        Información del auto:
-        <textarea value={carInfo} onChange={(e) => setCarInfo(e.target.value)} />
+        
+        <textarea value={carInfo} onChange={(e) => setCarInfo(e.target.value)}placeholder='Introducir Información del auto:'/>
       </label>
       <br />
       <button type="submit">Enviar</button>

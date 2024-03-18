@@ -45,6 +45,7 @@ function RoomRatesForm() {
 
     
     <form onSubmit={handleSubmit}>
+      <h1>Room Rates</h1>
       <label>
         Mínimo de noches:
         <input type="number" value={minNights} onChange={(e) => setMinNights(e.target.value)} />

@@ -43,6 +43,7 @@ function PriceHotelForm() {
   return (
     <div className='preciohotel'>
     <form onSubmit={handleSubmit}>
+      <h1>Informacion de Hotel</h1>
       <label>
         Precio por día:
         <input type="number" value={priceDay} onChange={(e) => setPriceDay(e.target.value)} />

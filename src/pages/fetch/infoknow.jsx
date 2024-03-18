@@ -37,14 +37,15 @@ function InfoKnowForm() {
   return (
     <div className='infoknow'>
     <form onSubmit={handleSubmit}>
+      <h1>Politicas Rent a Car</h1>
       <label>
-        Política de Cancelación:
-        <textarea value={infoCancelPolicy} onChange={(e) => setInfoCancelPolicy(e.target.value)} />
+        
+        <textarea value={infoCancelPolicy} onChange={(e) => setInfoCancelPolicy(e.target.value)} placeholder='Introducir Politica de cancelacion' />
       </label>
       <br />
       <label>
-        Información Especial:
-        <textarea value={infoSpecial} onChange={(e) => setInfoSpecial(e.target.value)} />
+        
+        <textarea value={infoSpecial} onChange={(e) => setInfoSpecial(e.target.value)} placeholder='Introducir informacion especial o adicional'/>
       </label>
       <br />
       <button type="submit">Enviar</button>

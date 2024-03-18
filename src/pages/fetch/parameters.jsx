@@ -49,6 +49,7 @@ function ParametersForm() {
   return (
     <div className='parameters'>
     <form onSubmit={handleSubmit}>
+      <h1>Parametros Auto</h1>
       <label>
         Velocidad:
         <input type="text" value={velocidad} onChange={(e) => setVelocidad(e.target.value)} />

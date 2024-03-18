@@ -41,6 +41,7 @@ function PriceCarForm() {
   return (
     <div className='preciocar'>
     <form onSubmit={handleSubmit}>
+      <h1>Precio y calificacion auto</h1>
       <label>
         Precio por día:
         <input type="number" value={priceDay} onChange={(e) => setPriceDay(e.target.value)} />

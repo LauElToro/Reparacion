@@ -44,6 +44,7 @@ function CarouselForm() {
     <div className='carousel'>
 
     <form onSubmit={handleSubmit}>
+      <h1>Evento</h1>
       <label>
         Ubicación:
         <input type="text" value={ubicacion} onChange={(e) => setUbicacion(e.target.value)} />

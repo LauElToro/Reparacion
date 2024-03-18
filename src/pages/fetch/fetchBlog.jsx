@@ -40,20 +40,28 @@ function BlogForm() {
   };
 
   return (
+    <>
+    
     <div className='formblog'>
-
+    <div>
+   
+    </div>
     <form  className='titulo-blog'  onSubmit={handleSubmit}>
+    <br />
+      <br />
+      <br />
+      <h1> Articulos de Blog</h1> 
       <label>
         Título:
         <input type="text" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
       </label>
       <br />
       <label>
-        Descripción:
-        <textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+        
+        <textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} placeholder='Introducir Descripcion de blog'/>
       </label>
       <br />
-      <label>
+      <label className='subtitulo'>
         Subtítulo:
         <input type="text" value={subtitulo} onChange={(e) => setSubtitulo(e.target.value)} />
       </label>
@@ -63,9 +71,10 @@ function BlogForm() {
         <input type="file" onChange={(e) => setImagen(e.target.files[0])} />
       </label>
       <br />
-      <button type="submit">Enviar</button>
+      <button type="submit">Publicar</button>
     </form>
     </div>
+    </>
   );
 }
 

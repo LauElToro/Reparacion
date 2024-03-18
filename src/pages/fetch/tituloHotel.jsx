@@ -49,6 +49,7 @@ function TituloHotelForm() {
   return (
     <div className='titulohotel'>
     <form onSubmit={handleSubmit}>
+      <h1>Titulo Hotel y Descripcion</h1>
       <label>
         Título del hotel:
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
