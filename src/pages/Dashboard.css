@@ -1,7 +1,7 @@
 
 
 .formblog{
-    background-color: rgb(244, 194, 128);
+    background-color: aliceblue;
     padding-top: 50px;
     padding-bottom: 50px;
     display: flex;
@@ -81,7 +81,7 @@
 
 .roomrates {
     margin-top: 20px;
-    background-color: rgb(244, 194, 128);
+    background-color:aliceblue;
     padding-top: 50px;
     padding-bottom: 50px;
     display: flex;
@@ -149,7 +149,7 @@
 
 .preciocar {
     margin-top: 20px;
-    background-color: rgb(244, 194, 128);
+    background-color: aliceblue;
     padding-top: 50px;
     padding-bottom: 50px;
     display: flex;
@@ -217,7 +217,7 @@
 
 .parameters {
     margin-top: 20px;
-    background-color: rgb(244, 194, 128);
+    background-color: aliceblue;
     padding-top: 50px;
     padding-bottom: 50px;
     display: flex;
@@ -286,7 +286,7 @@
 
 .infoknow {
     margin-top: 20px;
-    background-color: rgb(244, 194, 128);
+    background-color: aliceblue;
     padding-top: 50px;
     padding-bottom: 50px;
     display: flex;
@@ -354,7 +354,7 @@
 
 .carousel {
     margin-top: 20px;
-    background-color: rgb(244, 194, 128);
+    background-color: aliceblue;
     padding-top: 50px;
     padding-bottom: 50px;
     display: flex;
